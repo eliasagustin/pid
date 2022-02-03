@@ -4,6 +4,9 @@ import { SectionAboutComponent } from './section-about/section-about.component';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { SharedModule } from '../shared/shared.module';
+//import { SharedModule } from '../shared/shared.module';
+
 
 
 
@@ -15,7 +18,8 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     RouterModule.forChild([{ path: '', component: SectionAboutComponent}]),
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    SharedModule
   ]
 })
 export class SectionAboutModule { }

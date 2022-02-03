@@ -23,13 +23,13 @@ $app-dark-theme:  mat-dark-theme($app-dark-primary, $app-dark-accent, $app-dark-
 @include angular-material-theme($app-light-theme);
 
  
-.dark-theme {
+.light-theme {
   @include angular-material-theme($app-light-theme);
   background-color: #fff;
   color: #222;
 }
 
-.light-theme {
+.dark-theme {
   @include angular-material-theme($app-dark-theme);
   background-color: #222;
   color: #fff;

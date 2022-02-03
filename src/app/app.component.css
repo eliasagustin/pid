@@ -1,0 +1,20 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+mat-toolbar {
+    display: flex;
+}
+
+.flex-stretch {
+    flex: 1 1 auto;
+}
+
+.content {
+    padding: 16px;
+    min-height: 100vh;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+    white-space: normal;
+}

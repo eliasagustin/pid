@@ -132,25 +132,33 @@
   
 
   <br/><br/>
-  <div class="example-button-row">
-    <button mat-raised-button (click)="onSetTheme('light-theme')">Dark</button>
-    <button mat-raised-button (click)="onSetTheme('dark-theme')">Light</button>
-  </div>
+  
   <br/><br/>
 -->
   <mat-toolbar color="primary">
-  Material Tabs with Lazy Loaded Routes
+    <button mat-icon-button class="home" aria-label="icon-button with menu icon">
+      <mat-icon>home</mat-icon>
+    </button>
+      <span>Teoría y Práctica de un Control PID</span>
+      <span class="example-spacer"></span>
+      <mat-icon>bedtime</mat-icon> 
+      <mat-slide-toggle [formControl]="toggleControl" class="mr-8"></mat-slide-toggle> 
+      <!-- <div class="example-button-row">
+        <button mat-raised-button (click)="onSetTheme('light-theme')">Dark</button>
+        <button mat-raised-button (click)="onSetTheme('dark-theme')">Light</button>
+      </div> -->
+      
   </mat-toolbar>
 
-  <nav mat-tab-nav-bar>
+  
+  <nav mat-tab-nav-bar class="menuDinamico">
     <a mat-tab-link *ngFor="let tabItem of tabs" [routerLink]="tabItem.route" routerLinkActive #rla="routerLinkActive"
       [active]="rla.isActive">
       <mat-icon class="mr-8">{{tabItem.icon}}</mat-icon>
       {{tabItem.label}}
     </a>
   </nav>
-
- 
 <br>
 <router-outlet></router-outlet>
+
 </div>
