@@ -27,7 +27,7 @@ export class AppComponent implements OnInit{
     {
       label: 'Destacados',
       icon: 'home',
-      route: 'about',
+      route: 'topics',
     },
     {
       label: 'contact',
