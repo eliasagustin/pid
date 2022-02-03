@@ -25,7 +25,7 @@ export class AppComponent implements OnInit{
 
   tabs: TabItem[] = [
     {
-      label: 'about',
+      label: 'Destacados',
       icon: 'home',
       route: 'about',
     },
@@ -47,7 +47,10 @@ export class AppComponent implements OnInit{
 
   toggleControl = new FormControl(false);
 
-  constructor(public overlayContainer: OverlayContainer) {}
+  constructor(public overlayContainer: OverlayContainer) {
+    this.overlayContainer.getContainerElement().parentElement?.classList.remove('dark-theme');
+    this.overlayContainer.getContainerElement().parentElement?.classList.add('light-theme');
+  }
 
   ngOnInit(): void {
     this.toggleControl.valueChanges.subscribe((darkMode) => {

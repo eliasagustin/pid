@@ -7,12 +7,12 @@
 @include mat-core();
  
 // Define the default theme (same as the example above).
-$app-light-primary: mat-palette($mat-orange, 600);
-$app-light-accent:  mat-palette($mat-blue, 800);
+$app-light-primary: mat-palette($mat-deep-purple, 600);
+$app-light-accent:  mat-palette($mat-deep-purple, 800);
 $app-light-warn:  mat-palette($mat-red, 500);
 
-$app-dark-primary: mat-palette($mat-green, A200);
-$app-dark-accent:  mat-palette($mat-purple, A700);
+$app-dark-primary: mat-palette($mat-orange, A200);
+$app-dark-accent:  mat-palette($mat-orange, A700);
 $app-dark-warn:    mat-palette($mat-red, A400);
 
 $app-light-theme: mat-light-theme($app-light-primary, $app-light-accent, $app-light-warn);
@@ -25,7 +25,7 @@ $app-dark-theme:  mat-dark-theme($app-dark-primary, $app-dark-accent, $app-dark-
  
 .light-theme {
   @include angular-material-theme($app-light-theme);
-  background-color: #fff;
+  background-color: #EEE;
   color: #222;
 }
 
