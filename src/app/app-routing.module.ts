@@ -9,7 +9,7 @@ const routes: Routes = [
     redirectTo: 'about',
   },
   {
-    path: 'about',
+    path: 'topics',
     loadChildren: () =>
       import('./section-about/section-about.module').then(
         (m) => m.SectionAboutModule
