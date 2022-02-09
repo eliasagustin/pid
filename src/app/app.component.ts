@@ -3,13 +3,11 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import { FormControl } from '@angular/forms';
 import { MatTabChangeEvent } from '@angular/material/tabs/tab-group';
 
-
 export interface TabItem {
   label: string;
   icon: string;
   route: string;
 }
-
 
 @Component({
   selector: 'app-root',
@@ -21,8 +19,6 @@ export class AppComponent implements OnInit{
   
   title = 'Controladores PID';
 
-
-
   tabs: TabItem[] = [
     {
       label: 'Destacados',
@@ -30,26 +26,36 @@ export class AppComponent implements OnInit{
       route: 'topics',
     },
     {
-      label: 'contact',
+      label: 'Documentos',
+      icon: 'search',
+      route: 'section-intro-pid',
+    },
+    {
+      label: 'Hardware',
       icon: 'person',
       route: 'contact',
     },
     {
-      label: 'doc',
+      label: 'Descargas',
       icon: 'search',
       route: 'doc',
     },
+    {
+      label: 'Contacto',
+      icon: 'person',
+      route: 'contact',
+    }
   ];
 
   @HostBinding('class') componentCssClass: any;
 
   @HostBinding('class') className = '';
 
-  toggleControl = new FormControl(false);
+  toggleControl = new FormControl(true);
 
   constructor(public overlayContainer: OverlayContainer) {
-    this.overlayContainer.getContainerElement().parentElement?.classList.remove('dark-theme');
-    this.overlayContainer.getContainerElement().parentElement?.classList.add('light-theme');
+    this.overlayContainer.getContainerElement().parentElement?.classList.remove('light-theme');
+    this.overlayContainer.getContainerElement().parentElement?.classList.add('dark-theme');
   }
 
   ngOnInit(): void {

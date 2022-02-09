@@ -1,13 +1,16 @@
 
-    <div class="allCards">
+    <div class="allCards" >
 
         <section class="cards">
-
-            <div class="card2" *ngFor="let item of tarjeta">
-                <div class="card__image-container">
-                    <img appImgBroken src="{{item.imagen}}">
-                </div>
             
+            <div class="card2" *ngFor="let item of tarjeta">
+                <br>
+                <div class="card__image-container">
+                    <div class="card__image-mascara">
+                        <img appImgBroken src="{{item.imagen}}">
+                    </div>
+                </div>
+
                 <div class="card_content">
                     <p class="card_title text--medium">
                         {{item.titulo}}
@@ -16,7 +19,7 @@
                         <p class="text--medium">
                             {{item.subTitulo}}
                         </p>
-                        <p class="card_info2 text--medium">
+                        <p class="card_info2 text--medium" (click)="onCardClick(item.enlace)">
                             Mas Info
                         </p>
                     </div>
