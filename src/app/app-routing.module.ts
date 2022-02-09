@@ -23,10 +23,10 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'section-intro-pid',
+    path: 'doc',
     loadChildren: () =>
-      import('./section-intro-pid/section-intro-pid.module').then(
-        (m) => m.SectionIntroPidModule
+      import('./section-doc/section-doc.module').then(
+        (m) => m.SectionDocModule
       ),
   },
 ];

@@ -26,11 +26,6 @@ export class AppComponent implements OnInit{
       route: 'topics',
     },
     {
-      label: 'Documentos',
-      icon: 'search',
-      route: 'section-intro-pid',
-    },
-    {
       label: 'Hardware',
       icon: 'person',
       route: 'contact',
