@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'topics',
+    redirectTo: 'section-intro-pid',
   },
   {
     path: 'topics',
@@ -27,6 +27,27 @@ const routes: Routes = [
     loadChildren: () =>
       import('./section-doc/section-doc.module').then(
         (m) => m.SectionDocModule
+      ),
+  },
+  {
+    path: 'section-intro-pid',
+    loadChildren: () =>
+      import('./section-intro-pid/section-intro-pid.module').then(
+        (m) => m.SectionIntroPidModule
+      ),
+  },
+  {
+    path: 'section-construc',
+    loadChildren: () =>
+      import('./section-construc/section-construc.module').then(
+        (m) => m.SectionConstrucModule
+      ),
+  },
+  {
+    path: 'section-hardware',
+    loadChildren: () =>
+      import('./section-hardware/section-hardware.module').then(
+        (m) => m.SectionHardwareModule
       ),
   },
 ];

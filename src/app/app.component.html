@@ -153,8 +153,8 @@
   <nav mat-tab-nav-bar class="menuDinamico">
     <a mat-tab-link *ngFor="let tabItem of tabs" [routerLink]="tabItem.route" routerLinkActive #rla="routerLinkActive"
       [active]="rla.isActive">
-      <mat-icon class="mr-8">{{tabItem.icon}}</mat-icon>
-      {{tabItem.label}}
+      <mat-icon class="mr-8">{{tabItem.icon}}</mat-icon> {{tabItem.label}}
+      <!-- Se puede usar un caracter en blanco con ALT+255 -->
     </a>
   </nav>
 <br>

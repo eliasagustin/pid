@@ -36,10 +36,14 @@ $app-dark-theme:  mat-dark-theme($app-dark-primary, $app-dark-accent, $app-dark-
   @include angular-material-theme($app-light-theme);
   background-color: #EEE;
   color: #333;
+  background-image: url(https://images.pexels.com/photos/1939485/pexels-photo-1939485.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background-size: cover; height: 100vh;
 }
 
 .dark-theme {
   @include angular-material-theme($app-dark-theme);
   background-color: #222;
   //color: #fff;
+  background-image: url(https://wallpapercave.com/wp/wp3416319.jpg);
+  background-size: cover; height: 100vh;
 }

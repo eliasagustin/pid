@@ -17,7 +17,7 @@ import {AppRoutingModule } from './app-routing.module';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImgBrokenDirective } from './shared/directives/img-broken.directive';
-
+import { ThreeSixtyModule } from '@mediaman/angular-three-sixty';
 
 
 @NgModule({
@@ -41,7 +41,8 @@ import { ImgBrokenDirective } from './shared/directives/img-broken.directive';
     MatSlideToggleModule,
     FormsModule,
     ReactiveFormsModule,
-    MatTabsModule
+    MatTabsModule,
+    ThreeSixtyModule
   ],
   providers: [],
   bootstrap: [AppComponent]

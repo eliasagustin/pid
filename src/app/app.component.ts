@@ -19,26 +19,34 @@ export class AppComponent implements OnInit{
   
   title = 'Controladores PID';
 
+  // Para revisar la galeria de iconos
+  // https://fonts.google.com/icons
+
   tabs: TabItem[] = [
     {
-      label: 'Destacados',
-      icon: 'home',
+      label: ' Destacados',
+      icon: 'grid_view',
       route: 'topics',
     },
     {
+      label: ' Documentos',
+      icon: 'menu_book',
+      route: 'section-intro-pid',
+    },
+    {
       label: 'Hardware',
-      icon: 'person',
-      route: 'contact',
+      icon: 'hardware',
+      route: 'section-hardware',
     },
     {
       label: 'Descargas',
-      icon: 'search',
-      route: 'doc',
+      icon: 'file_download',
+      route: 'section-construc',
     },
     {
       label: 'Contacto',
       icon: 'person',
-      route: 'contact',
+      route: 'section-construc',
     }
   ];
 
