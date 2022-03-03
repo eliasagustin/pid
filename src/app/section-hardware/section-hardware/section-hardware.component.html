@@ -4,30 +4,30 @@
         <header>
             <h1 id="titulo" class="page-title">Hardware Desarrollado - Prototipos</h1>
             <!-- <div class="linea"></div> -->
-            
+
         </header>
-        
+
         <h2 class="subtitulo-centrado">Primer prototipo funcional brazo PID</h2>
-        
+
         <iframe scrolling="no" id="objViewer" src="https://eliasagustin.github.io/EGraficos/viewer360/prot1.html" title="Viewer" frameborder="0"></iframe>
-        
+
         <div class="w3-container texto">
-                
+
             <p>Antes de comenzar a desglosar las partes de este primer prototipo; tales como su funcionamiento, sus componentes, errores/mejoras ...
-                 debemos entender que estamos haciendo.</p>
+                                 debemos entender que estamos haciendo.</p>
             <h2 class="subtitulo">Definición del dispositivo</h2>
-                
+
             <p>A simple vista se puede observar una barra pivotante de 65 cm de largo, en la cuál se desplaza libremente un carro con una masa aproximada de 150 gr,
-                de manera que cuando el servomotor se accione, éste cambie la inclinación de la barra y como consecuencia el carro se desplazará por su
-                energía potencial, buscando llegar hacia un nuevo punto de equilibrio.</p>
+                                de manera que cuando el servomotor se accione, éste cambie la inclinación de la barra y como consecuencia el carro se desplazará por su
+                                energía potencial, buscando llegar hacia un nuevo punto de equilibrio.</p>
             <p>Bueno ahora la idea es usar los conocimientos de teoría de control y programación, para indicarle a éste sistema en qué posición de la barra
-                queremos que el carro encuentre su nuevo punto de equilibrio (se detenga). Dicho punto recibe el nombre de SetPoint u(t).
-                El error e(t) es la diferencia entre la posición actual del carro y el SetPoint.
-                El sistema estará siempre buscando desplazar el carro hacia el setpoint, enfrentando  perturbaciones externas y acomodándose automáticamente.
-                 Ej de perturbación: Una persona que manualmente mueve el carro fuera de su SetPoint.</p>
+                                queremos que el carro encuentre su nuevo punto de equilibrio (se detenga). Dicho punto recibe el nombre de SetPoint u(t).
+                                El error e(t) es la diferencia entre la posición actual del carro y el SetPoint.
+                                El sistema estará siempre buscando desplazar el carro hacia el setpoint, enfrentando  perturbaciones externas y acomodándose automáticamente.
+                                 Ej de perturbación: Una persona que manualmente mueve el carro fuera de su SetPoint.</p>
             <p>Ahora la magia de los sistemas PID reside en cuán rápido queremos que el sistema responda, si queremos que llegue lento, seguro y sin pasarse,
-                 que llegue rápidamente y pasando de largo el SetPoint (momentáneamente) o quizás un intermedio entre los dos comportamientos anteriores.
-                 Eso se logra jugando con las constantes (Kp, Kd y Ki) del sistema.</p>
+                                 que llegue rápidamente y pasando de largo el SetPoint (momentáneamente) o quizás un intermedio entre los dos comportamientos anteriores.
+                                 Eso se logra jugando con las constantes (Kp, Kd y Ki) del sistema.</p>
         </div>
         <div class="linea"></div>
         <br>
@@ -35,51 +35,112 @@
             <h2 class="subtitulo">¿Cómo sabe la posición del carro?</h2>
             <div class="w3-threequarter w3-container texto">
                 <p>El dispositivo está capacitado con sensores ultrasónicos en los extremos de la barra, y su utilidad es conocer la
-                     distancia del carro respecto a los extremos en todo momento. Si bien inicialmente un sensor podría parecer suficiente,
-                      las limitaciones físicas del sensor ultrasónico y la distancia de la barra obligó a instalar uno en cada extremo.</p>
+                                         distancia del carro respecto a los extremos en todo momento. Si bien inicialmente un sensor podría parecer suficiente,
+                                          las limitaciones físicas del sensor ultrasónico y la distancia de la barra obligó a instalar uno en cada extremo.</p>
                 <p>El funcionamiento de los sensores ultrasónicos es bastante sencillo en la teoría, cada sensor tiene cabezales cilíndricos,
-                     uno se encarga de emitir un pin sónico y el otro cabezal cilíndrico actúa de micrófono. La distancia se obteniene 
-                     al multiplicar la velocidad del sonido (340 m/s) = (0.034 cm/ms(micro segundos)) * tiempo recorrido del Ping, y todo lo 
-                      anterior dividido 2 ya que el Ping hace un viaje de ida y vuelta.</p>
-                    <p>Por las dudas si alguien quiere experimentar con este sensor y arduino, les comparto un código básico para mostrar lecturas 
-                    de distancia por el puerto serial.</p>
-               
+                                         uno se encarga de emitir un pin sónico y el otro cabezal cilíndrico actúa de micrófono. La distancia se obteniene 
+                                         al multiplicar la velocidad del sonido (340 m/s) = (0.034 cm/ms(micro segundos)) * tiempo recorrido del Ping, y todo lo 
+                                          anterior dividido 2 ya que el Ping hace un viaje de ida y vuelta.</p>
+                <p>Por las dudas si alguien quiere experimentar con este sensor y arduino, les comparto un código básico para mostrar lecturas 
+                                        de distancia por el puerto serial.</p>
+
             </div>
             <div class="w3-quarter w3-container w3-hide-small">
                 <div class="image-container3">
                     <img class="imagen-chica" src="./assets/images-articles/ultrasonico.png" alt="PID control - Tank valve">
                 </div>
-                
+
             </div>
         </div>
-        
-        
+
+
         <div class="linea"></div>
-        
+
         <div class="subtitulo">
-
-            <h2>Parámetros Fundamentales</h2>
-
-            <p>El algoritmo de control incluye tres parámetros fundamentales: Ganancia proporcional (P), Integral (I) y Derivativo (D).</p>
+            <h2>Metodo de experimentación</h2>
         </div>
+        <p class="w3-container">Para ver el  comportamiento del PID ante diferentes constantes,
+            se ha seguido la siguiente metodología: </p>
         <ul class="item-list">
             <li>
-                <b>(P) Ganancia Proporcional</b>
-                — Mide la diferencia entre el valor actual y el set-point (en porcentaje), luego <b>aplica el cambio</b> en dicho porcentaje.</li>
+                Abrimos el codigo del repositorio, desde Arduino IDE, modificando <b>solo</b> las constantes  (setPoint, Kp, Ki, Kd).
+            </li>
             <li>
-                <b>(I) Ganancia Integral</b>
-                — Se refiere al tiempo que se toma para llevar a cabo acción correctiva. Mientras el valor sea más pequeño, el ajuste es más rápido pero puede causar inestabilidad en el sistema, oscilaciones</li>
+                Compilamos el codigo y dejamos conectado el usb, para visualizar el setPoint y la distancia del carro a los extremos de la barra.
+            </li>
             <li>
-                <b>(D) Ganancia Derivativo</b>
-                — emite una acción <b>predictiva</b>, es decir, prevé el error e inicia una acción oportuna. Responde a la velocidad del cambio del error y produce una corrección significativa antes de que la magnitud del error se vuelva demasiado grande.</li>
+                Una vez estabilizado, vamos a perturbar el sistema desplazando el carro +/-5cm a la posición del carro manualmente y soltamos. (si en el desplazamineto posible el diferencial es menor a 5cm, igual desplazamos lo máximo posible fisicmante)
+            </li>
+            <li>
+                Una vez estabilizado, vamos a perturbar el sistema desplazando el carro +/-10cm a la posición del carro manualmente y soltamos. (si en el desplazamineto posible el diferencial es menor a 10cm, igual desplazamos lo máximo posible fisicmante)
+            </li>
         </ul>
-        
-        
+        <div class="w3-row">
+            <div class="subtitulo2">Primer Ejecución</div>
+            <div class="w3-threequarter w3-container texto">
+                <iframe class="iframe1" src="https://www.youtube.com/embed/lUPvI-Kv9UI" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="w3-quarter w3-container">
+                <div class="constantes-video">
+                   SP: <br>
+                   Kp: <br> 
+                   Ki: <br>
+                   Kd: <br>
+                </div>
+            </div>
+        </div>
+        <div class="w3-row">
+            <div class="subtitulo2">Segunda Ejecución</div>
+            <div class="w3-threequarter w3-container texto">
+                <iframe class="iframe1" src="https://www.youtube.com/embed/lUPvI-Kv9UI" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="w3-quarter w3-container">
+                <div class="constantes-video">
+                   SP: <br>
+                   Kp: <br> 
+                   Ki: <br>
+                   Kd: <br>
+                </div>
+            </div>
+        </div>
+        <div class="linea"></div>
+        <br>
+        <div class="w3-row">
+            <h2 class="subtitulo">Errores aprendidos y mejoras</h2>
+
+        </div>
+
+        <div class="linea"></div>
+        <br>
+        <div class="w3-row">
+            <h2 class="subtitulo">Walkthrough Code</h2>
+
+        </div>
         
         <div class="linea"></div>
         <br>
-        
+        <div class="w3-row">
+            <h2 class="subtitulo">Componentes</h2>
+
+        </div>
+
+        <div class="linea"></div>
+        <br>
+
+        <div class="w3-row">
+            <h2 class="subtitulo">Esquema de Conexiones</h2>
+
+        </div>
+
+        <div class="linea"></div>
+        <br>
+
+        <div class="w3-row">
+            <h2 class="subtitulo">STLs</h2>
+
+        </div>
+
     </article>
-    
+
 
 </body>
