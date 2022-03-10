@@ -191,7 +191,7 @@ float obtieneDistancia(int tP_A,int tP_B, int eP_A, int eP_B){
         }
         //En el caso que la medicion esté fuera de rango dará error en las banderas
         if ((sensor_A == true) && (sensor_B == true)){
-          
+            distanciaTotal = 50 - S_A;
             //A partir de los 26 cm cambia el sensor de lectura por el lado mas cerca del carro
             if ((S_A>=26) && (S_B<26)){
                 distanciaTotal = S_B;
