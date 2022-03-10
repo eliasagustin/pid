@@ -11,5 +11,9 @@ export class SectionHardwareComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
+  onClickButtonNewTab(url: string): void {
+    window.open(
+      url, "_blank");
+  }
 }

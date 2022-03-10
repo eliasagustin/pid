@@ -12,22 +12,23 @@
         <iframe scrolling="no" id="objViewer" src="https://eliasagustin.github.io/EGraficos/viewer360/prot1.html" title="Viewer" frameborder="0"></iframe>
 
         <div class="w3-container texto">
-
+            <br>
             <p>Antes de comenzar a desglosar las partes de este primer prototipo; tales como su funcionamiento, sus componentes, errores/mejoras ...
-                                 debemos entender que estamos haciendo.</p>
-            <h2 class="subtitulo">Definición del dispositivo</h2>
+                                                                 debemos entender que estamos haciendo.</p>
+            <h2 class="subtitulo">Descripción del dispositivo</h2>
 
             <p>A simple vista se puede observar una barra pivotante de 65 cm de largo, en la cuál se desplaza libremente un carro con una masa aproximada de 150 gr,
-                                de manera que cuando el servomotor se accione, éste cambie la inclinación de la barra y como consecuencia el carro se desplazará por su
-                                energía potencial, buscando llegar hacia un nuevo punto de equilibrio.</p>
-            <p>Bueno ahora la idea es usar los conocimientos de teoría de control y programación, para indicarle a éste sistema en qué posición de la barra
-                                queremos que el carro encuentre su nuevo punto de equilibrio (se detenga). Dicho punto recibe el nombre de SetPoint u(t).
-                                El error e(t) es la diferencia entre la posición actual del carro y el SetPoint.
-                                El sistema estará siempre buscando desplazar el carro hacia el setpoint, enfrentando  perturbaciones externas y acomodándose automáticamente.
-                                 Ej de perturbación: Una persona que manualmente mueve el carro fuera de su SetPoint.</p>
-            <p>Ahora la magia de los sistemas PID reside en cuán rápido queremos que el sistema responda, si queremos que llegue lento, seguro y sin pasarse,
-                                 que llegue rápidamente y pasando de largo el SetPoint (momentáneamente) o quizás un intermedio entre los dos comportamientos anteriores.
-                                 Eso se logra jugando con las constantes (Kp, Kd y Ki) del sistema.</p>
+                                                                de manera que al activar al servomotor se cambie la inclinación de la barra, y como consecuencia el carro se desplazará por su
+                                                                energía potencial, buscando llegar hacia un nuevo punto de equilibrio.</p>
+            <p>Usando los conocimientos de teoría de control y programación, podemos indicarle a éste sistema en qué posición de la barra
+                                                                queremos que el carro encuentre su nuevo punto de equilibrio (se detenga). Dicho punto recibe el nombre de SetPoint. También es importante señalar 
+                                                                otra magnitud importante, que es el Error, y se deriva de la diferencia entre la posición actual del carro y el SetPoint.<br>
+                El sistema PID estará siempre buscando eliminar el error, en otras palabras, desplazar el carro hacia el setpoint, enfrentando
+                                                                  perturbaciones externas y ajustándose automáticamente.
+                                                                 Ej de perturbación: Una persona que manualmente mueve el carro fuera de su SetPoint.</p>
+            <p>Un factor deseado de estos sistemas PID reside en cuán rápido queremos que el sistema responda, si queremos que llegue lentamente y sin pasarse del SP, 
+                                                                 que llegue rápidamente y pasando de largo el SetPoint (momentáneamente) o quizás un intermedio entre los dos comportamientos anteriores.
+                                                                 Eso se logra afinando las constantes (Kp, Kd y Ki) del sistema.</p>
         </div>
         <div class="linea"></div>
         <br>
@@ -35,14 +36,19 @@
             <h2 class="subtitulo">¿Cómo sabe la posición del carro?</h2>
             <div class="w3-threequarter w3-container texto">
                 <p>El dispositivo está capacitado con sensores ultrasónicos en los extremos de la barra, y su utilidad es conocer la
-                                         distancia del carro respecto a los extremos en todo momento. Si bien inicialmente un sensor podría parecer suficiente,
-                                          las limitaciones físicas del sensor ultrasónico y la distancia de la barra obligó a instalar uno en cada extremo.</p>
+                                                                                 distancia del carro respecto a los extremos en todo momento. Si bien inicialmente un sensor podría parecer suficiente,
+                                                                                  las limitaciones físicas del sensor ultrasónico y la distancia de la barra obligó a instalar uno en cada extremo.</p>
                 <p>El funcionamiento de los sensores ultrasónicos es bastante sencillo en la teoría, cada sensor tiene cabezales cilíndricos,
-                                         uno se encarga de emitir un pin sónico y el otro cabezal cilíndrico actúa de micrófono. La distancia se obteniene 
-                                         al multiplicar la velocidad del sonido (340 m/s) = (0.034 cm/ms(micro segundos)) * tiempo recorrido del Ping, y todo lo 
-                                          anterior dividido 2 ya que el Ping hace un viaje de ida y vuelta.</p>
-                <p>Por las dudas si alguien quiere experimentar con este sensor y arduino, les comparto un código básico para mostrar lecturas 
-                                        de distancia por el puerto serial.</p>
+                                                                                 uno se encarga de emitir un pin sónico y el otro cabezal cilíndrico actúa de micrófono. La distancia se obteniene 
+                                                                                 al multiplicar la velocidad del sonido (340 m/s) = (0.034 cm/ms(micro segundos)) * (tiempo recorrido del Ping), y todo lo 
+                                                                                  anterior dividido 2 debido a que el Ping hace un viaje de ida y vuelta.</p>
+
+                <div class="info">
+                    <p>En el caso de que alguien quiera experimentar con estos sensores en arduino, les comparto un código básico para visualizar 
+                        la distancia por el puerto serial.</p>
+                    <div class="button" (click)="onClickButtonNewTab('https://raw.githubusercontent.com/eliasagustin/pid/main/src/assets/codes/sensor_de_distancia_ultrasonico.ino')">
+                        Abrir código</div>
+                </div>
 
             </div>
             <div class="w3-quarter w3-container w3-hide-small">
@@ -57,22 +63,25 @@
         <div class="linea"></div>
 
         <div class="subtitulo">
-            <h2>Metodo de experimentación</h2>
+            <h2>Método para las pruebas</h2>
         </div>
-        <p class="w3-container">Para ver el  comportamiento del PID ante diferentes constantes,
-            se ha seguido la siguiente metodología: </p>
+        <p class="w3-container texto">Para estudiar el comportamiento de los controladores PID ante diferentes constantes,
+                                    se ha seguido la siguiente metodología:
+        </p>
         <ul class="item-list">
             <li>
-                Abrimos el codigo del repositorio, desde Arduino IDE, modificando <b>solo</b> las constantes  (setPoint, Kp, Ki, Kd).
+                Abrimos el codigo del repositorio, desde Arduino IDE, modificando
+                <b>solo</b>
+                las constantes  (setPoint, Kp, Ki, Kd).
             </li>
             <li>
-                Compilamos el codigo y dejamos conectado el usb, para visualizar el setPoint y la distancia del carro a los extremos de la barra.
+                Aseguramos el dispositivo, compilamos el codigo y dejamos conectado el usb, para visualizar el setPoint y el error medido.
             </li>
             <li>
-                Una vez estabilizado, vamos a perturbar el sistema desplazando el carro +/-5cm a la posición del carro manualmente y soltamos. (si en el desplazamineto posible el diferencial es menor a 5cm, igual desplazamos lo máximo posible fisicmante)
+                Una vez estabilizado, para perturbar el sistema se desplaza manualmente el carro hacia un extremo de la barra y soltar.
             </li>
             <li>
-                Una vez estabilizado, vamos a perturbar el sistema desplazando el carro +/-10cm a la posición del carro manualmente y soltamos. (si en el desplazamineto posible el diferencial es menor a 10cm, igual desplazamos lo máximo posible fisicmante)
+                Una vez estabilizado, desplazar el carro manualmente hacia el otro extremo y soltar.
             </li>
         </ul>
         <div class="w3-row">
@@ -82,10 +91,10 @@
             </div>
             <div class="w3-quarter w3-container">
                 <div class="constantes-video">
-                   SP: 24<br>
-                   Kp: [2..11]<br> 
-                   Ki: 0<br>
-                   Kd: 0<br>
+                    SP: 24<br>
+                    Kp: [2..11]<br>
+                    Ki: 0<br>
+                    Kd: 0<br>
                 </div>
             </div>
         </div>
@@ -96,10 +105,10 @@
             </div>
             <div class="w3-quarter w3-container">
                 <div class="constantes-video">
-                   SP: 24<br>
-                   Kp: 10<br> 
-                   Ki: 0<br>
-                   Kd: [1, 10, 50, 100, 200, 250]<br>
+                    SP: 24<br>
+                    Kp: 10<br>
+                    Ki: 0<br>
+                    Kd: [1, 10, 50, 100, 200, 250]<br>
                 </div>
             </div>
         </div>
@@ -116,7 +125,7 @@
             <h2 class="subtitulo">Walkthrough Code</h2>
 
         </div>
-        
+
         <div class="linea"></div>
         <br>
         <div class="w3-row">
