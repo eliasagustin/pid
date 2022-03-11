@@ -138,6 +138,32 @@ ul li {
     box-shadow: 0px 0px 10px 1px #0ff; */
 }
 
+.grilla-texto{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    margin: 10px;
+    background-color: rgba(8, 8, 8, 0.24);
+    padding:5px;
+}
+.item-grilla-preguntas {
+    grid-column: 1/6;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    border-color: rgba(255, 42, 4, 0.486);
+    border-style: solid;
+    border-width: 1px;
+}
+.item-grilla-respuestas {
+    grid-column: 2/8;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    border-color: rgb(0, 255, 221);
+    border-style: solid;
+    border-width: 1px;
+}
+
 .image-container2 img {
   width: 300px;
   height: 400px;
