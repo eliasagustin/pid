@@ -63,7 +63,7 @@
         <div class="linea"></div>
 
         <div class="subtitulo">
-            <h2>Método para las pruebas</h2>
+            <h2>Método usado para las pruebas</h2>
         </div>
         <p class="w3-container texto">Para estudiar el comportamiento de los controladores PID ante diferentes constantes,
                                                             se ha seguido la siguiente metodología:
@@ -113,28 +113,54 @@
             </div>
         </div>
         <div class="linea"></div>
-        <br>
+        
         <div class="w3-row">
             <h2 class="subtitulo">Errores aprendidos y mejoras</h2>
             <div class="grilla-texto">
                 <div class="item-grilla-preguntas">
-                    Los sensores elegidos capturan mucho ruido, si bien intenté filtrar la señal suavizando la entrada, llega un punto
-                                    donde el filtrado interfiere con la respuesta del controlador creando delay.
+                    <p class="texto">1º Problema<br>
+                        Los sensores elegidos capturan mucho ruido, si bien intenté filtrar la señal suavizando la entrada, llega un punto
+                                        donde el filtrado interfiere con la respuesta del controlador creando delay.</p>    
                 </div>
-                <div class="item-grilla-respuestas"></div>
+                <div class="item-grilla-respuestas">
+                    <p class="texto">Solución a implementar:<br>
+                        Para tratar de minimizar el ruido se recomienda implementar el sensor VL53L0X, que utiliza tecnología laser 
+                        para medir distancias menores a 2 metros, de lectura instantanea, con una implementación de código amigable por tener su propia
+                        libreria y otro punto importante es la <a href="http://robots-argentina.com.ar/didactica/vl53l0x-sensor-de-distancia-que-mide-por-la-velocidad-de-la-luz-time-of-fly/">documentación disponible</a>
+                        en español.
+                    </p>
+                </div>
                 <div class="item-grilla-preguntas">
-                    La fuerza ejercida por el servomotor con algunos parámetros apalanca el carro proyectandolo al aire.
+                    <p class="texto">2º Problema<br>
+                        La fuerza ejercida por el servomotor con algunos parámetros apalanca el carro proyectandolo al aire.</p>
                 </div>
-                <div class="item-grilla-respuestas"></div>
+                <div class="item-grilla-respuestas">
+                    <p class="texto">Solución a implementar:<br>
+                        Una forma relativamente sencilla de asegurar el carro sin limitar su movimiento, es instalar una varilla de acero 4mm de diámetro, 
+                         en forma paralela a la barra pivotante. También es necesario modificar el diseño del carro, para q dicha varilla atraviese el cuerpo
+                         limitando el moviento vertical del mismo, de esta manera el carro estará siempre en contacto con la barra pivotante.
+                    </p>
+                </div>
                 <div class="item-grilla-preguntas">
-                    El diseño del carro no contempla la fijación del lastre perdiendo tiempo en tratar de ajustarlo.
+                    <p class="texto">3º Problema<br>
+                        El diseño del carro no contempla la fijación del lastre perdiendo tiempo en tratar de ajustarlo.</p>
                 </div>
-                <div class="item-grilla-respuestas"></div>
+                <div class="item-grilla-respuestas">
+                    <p class="texto">Solución a implementar:<br>
+                        Rediseñar el carro incorporando una cavidad cilíndrica para alojar el lastre, y fijandolo mediante tornillos.
+                    </p>
+                </div>
                 <div class="item-grilla-preguntas">
-                    Como al modificar las constantes no se implementó ninguna interfaz, estas solo se pueden cambiar con la modificación 
-                                    del código fuente luego y resubiendolo.
+                    <p class="texto">4º Problema<br>
+                        Como al modificar las constantes no se implementó ninguna interfaz, estas solo se pueden cambiar con la modificación 
+                        del código fuente luego y resubiendolo.</p>
                 </div>
-                <div class="item-grilla-respuestas"></div>
+                <div class="item-grilla-respuestas">
+                    <p class="texto">Solución a implementar:<br>
+                        Crear una interfaz en windows form para lograr la comunicación serial mediante el puerto USB, ésta debe tener la capacidad de leer/modificar
+                        todas constantes, agregar la capacidad de guardar y graficar tanto el error como setpoint vs tiempo.
+                    </p>
+                </div>
             </div>
         </div>
 
@@ -157,7 +183,11 @@
 
         <div class="w3-row">
             <h2 class="subtitulo">Esquema de Conexiones</h2>
-
+            <div class="w3-container">
+                <div class="image-container1">
+                    <img src="./assets/images-articles/Esquema.png">
+                </div>
+            </div>
         </div>
 
         <div class="linea"></div>
