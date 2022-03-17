@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SectionHardwareComponent } from './section-hardware/section-hardware.component';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -11,7 +12,8 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild([{path:'', component: SectionHardwareComponent}])
+    RouterModule.forChild([{path:'', component: SectionHardwareComponent}]),
+    SharedModule
   ]
 })
 export class SectionHardwareModule { }

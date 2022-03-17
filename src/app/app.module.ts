@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
@@ -22,7 +22,7 @@ import { ThreeSixtyModule } from '@mediaman/angular-three-sixty';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -42,7 +42,8 @@ import { ThreeSixtyModule } from '@mediaman/angular-three-sixty';
     FormsModule,
     ReactiveFormsModule,
     MatTabsModule,
-    ThreeSixtyModule
+    ThreeSixtyModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
