@@ -9,13 +9,13 @@ const int trigPinB = 6;
 const int echoPinB = 5;
 
 //defino las variables PID
-int kp = 8; // seudo constantes porque van a variar con por interface "A FUTURO"
-float ki = 0.1; // seudo constantes porque van a variar con por interface "A FUTURO"
-int kd = 100; // seudo constantes porque van a variar con por interface "A FUTURO"
+int kp = 3; // seudo constantes porque van a variar con por interface "A FUTURO"
+float ki = 1; // seudo constantes porque van a variar con por interface "A FUTURO"
+int kd = 0; // seudo constantes porque van a variar con por interface "A FUTURO"
 
 int periodoSeteado = 46; // guardado en kHz
 
-double Setpoint= 26; // seteo la distancia de entrada
+double Setpoint= 24; // seteo la distancia de entrada
 
 double acumError, tasaError, error, posicion;
 double ultimoError = 0;
@@ -55,7 +55,7 @@ unsigned long tiempoAnt = 0.0;
 void setup() {
   Serial.begin(9600); // Comienza la comunicación serial
   myservo.attach(8); // asocio la instancia servo al pin digital 8
-  pinMode(13, OUTPUT);
+  pinMode(13, OUTPUT); // Defino salida visual con el led de 10 prendido y apagado al arrancar  
   for(int i=0; i<10; i=i+1){
     digitalWrite(13, HIGH);
     delay(150);
@@ -66,16 +66,10 @@ void setup() {
   pinMode(echoPinA, INPUT); // Defino trigPin como entrada del eco
   pinMode(trigPinB, OUTPUT); // Defino trigPin como salida
   pinMode(echoPinB, INPUT); // Defino trigPin como entrada del eco
-  myservo.write(75); //Put the servco at angle 125, so the balance is in the middle
+  myservo.write(75); // Le digo al servo que se dirija a un angulo de 75
   
   tiempo = millis();
 }
-
-// Referencia PID/
-//  https://descubrearduino.com/como-hacer-un-pid-con-arduino/
-//  http://electronoobs.com/eng_arduino_tut100.php
-//  http://electronoobs.com/eng_arduino_tut100_code1.php
-//  https://www.luisllamas.es/teoria-de-control-en-arduino-el-controlador-pid/ MUY COPADO EL TUTO
 
 void loop(){
     periodo =  millis() - tiempo;
@@ -83,33 +77,27 @@ void loop(){
     tiempo = millis();
     dist = (obtieneDistancia(trigPinA, trigPinB, echoPinA, echoPinB));
     error = Setpoint - dist; // calculo error
-    if ((0<=(error+0.2))&&(error<=0.2)){
+    if ((0<=(error+0.4))&&(error<=0.4)){
       //Serial.print("error: ");
       //Serial.print(error);
       error=0; // Debido a que la falta de presicion del servo acoto la salida error+-2
       }
     PID_Total = computePID( error, millis() - tiempo);
     
-    PID_Total = map(PID_Total, -230, 230, 20 , 110); //Mapeo la salida del pid a un rango de 0 a 150 
+    PID_Total = map(PID_Total, -230, 230, 45 , 125); //Mapeo la salida del pid a un rango de 0 a 150 
     PID_grados = (int)PID_Total;
-    if(PID_grados < 20) //Establesco mínimo permitido a corregir
-      {PID_grados = 20;}
-    if(PID_grados > 110)
-      {PID_grados = 110;} //Establesco máximo permitido a corregir
-    //Serial.print(" ,PID_grados: ");
-    //Serial.print(PID_grados);
+    if(PID_grados < 45) //Establesco mínimo permitido a corregir
+      {PID_grados = 45;}
+    if(PID_grados > 125)
+      {PID_grados = 125;} //Establesco máximo permitido a corregir
     myservo.write(PID_grados);
     //Muestro salida para graficar
-    //Serial.print(" kHz: ");
-    //Serial.print(periodo);
     
     Serial.print("Setpoint: ");
     Serial.print(Setpoint,1);
         
     Serial.print(" ,error: ");
     Serial.println(Setpoint-(error),1);
-    //Serial.print(" ,Distancia: ");
-    //Serial.println(dist,1);
   }
 }
 
@@ -117,17 +105,11 @@ float computePID(double error, int tiempoTranscurrido){
   acumError = acumError + (error * tiempoTranscurrido); // calculo integral
   tasaError = (error - ultimoError)/tiempoTranscurrido; // calculo derivativa
   float salida = kp*error + ki*acumError + kd*tasaError; //PID
-//  Serial.print(" kp*error: ");
-//  Serial.print(kp*error);
-//  Serial.print(" ,ki*acumError : ");
-//  Serial.print(ki*acumError );
-//  Serial.print(" ,salida: ");
-//  Serial.print(salida);
+
   ultimoError = error; //guardo el error acutal para la proxima iteracion
   return salida; //señal de salida del PID
 }
 
-//obtieneDistancia(trigPinA, trigPinB, echoPinA, echoPinB);
 float obtieneDistancia(int tP_A,int tP_B, int eP_A, int eP_B){
   
   // seteo las banderas para generar una salida estable de medicion
@@ -145,7 +127,7 @@ float obtieneDistancia(int tP_A,int tP_B, int eP_A, int eP_B){
         delayMicroseconds(10);
         digitalWrite(tP_A, LOW);
         
-        // Leo la lectura devuelta por echoPin, que es la duracion de onda de sonido  en microsegundo returns the sound wave travel time in microseconds
+        // Leo la lectura devuelta por echoPin, que es la duracion de onda de sonido  en microsegundos
         duracionA = pulseIn(eP_A, HIGH);
         if (duracionA<3000 and duracionA>150){ // max y min
           if (anterior1A == 0){
