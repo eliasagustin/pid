@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-code-viewer',
   templateUrl: './code-viewer.component.html',
@@ -13,6 +14,7 @@ export class CodeViewerComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   code = `
   #include<Servo.h> // llamo a la libreria para el servo
   Servo myservo; // lo instancio

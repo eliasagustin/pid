@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ImgBrokenDirective } from './directives/img-broken.directive';
 import { CodeViewerComponent } from './code-viewer/code-viewer.component';
-
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
@@ -11,7 +11,8 @@ import { CodeViewerComponent } from './code-viewer/code-viewer.component';
     CodeViewerComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatExpansionModule
   ],
   exports: [
     ImgBrokenDirective,

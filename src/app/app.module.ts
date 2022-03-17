@@ -18,6 +18,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImgBrokenDirective } from './shared/directives/img-broken.directive';
 import { ThreeSixtyModule } from '@mediaman/angular-three-sixty';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
@@ -38,12 +39,14 @@ import { ThreeSixtyModule } from '@mediaman/angular-three-sixty';
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
+    MatExpansionModule,
     MatSlideToggleModule,
     FormsModule,
     ReactiveFormsModule,
     MatTabsModule,
     ThreeSixtyModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
