@@ -1,14 +1,42 @@
-<div class="w3-row" *ngFor="let item of videoData">
-    <div class="subtitulo2">{{item.titulo}}</div>
-    <div class="w3-threequarter w3-container texto">
-        <iframe class="iframe1" [src]="myTrustedURL1" frameborder="0" allowfullscreen></iframe>
+<div class="w3-row">
+
+    <div class="subtitulo2">{{videoData[0].titulo}}</div>
+    <div class="contenedor">
+        <div class="w3-threequarter w3-container texto">
+            <iframe class="iframe1" [src]="myTrustedURL1" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="w3-quarter w3-container">
+            <div class="constantes-video">
+                SP:
+                {{videoData[0].sp}}<br>
+                Kp:
+                {{videoData[0].kp}}<br>
+                Ki:
+                {{videoData[0].ki}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                Kd:
+                {{videoData[0].kd}}<br>
+            </div>
+        </div>
     </div>
-    <div class="w3-quarter w3-container">
-        <div class="constantes-video">
-            SP: {{item.sp}}<br>
-            Kp: {{item.kp}}<br>
-            Ki: {{item.ki}}<br>
-            Kd: {{item.kd}}<br>
+</div>
+<div class="w3-row">
+
+    <div class="subtitulo2">{{videoData[1].titulo}}</div>
+    <div class="contenedor">
+        <div class="w3-threequarter w3-container texto">
+            <iframe class="iframe1" [src]="myTrustedURL2" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="w3-quarter w3-container">
+            <div class="constantes-video">
+                SP:
+                {{videoData[1].sp}}<br>
+                Kp:
+                {{videoData[1].kp}}<br>
+                Ki:
+                {{videoData[1].ki}}<br>
+                Kd:
+                {{videoData[1].kd}}<br>
+            </div>
         </div>
     </div>
 </div>

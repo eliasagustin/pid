@@ -6,12 +6,10 @@
             <!-- <div class="linea"></div> -->
 
         </header>
-
-        <h2 class="subtitulo-centrado">Primer prototipo funcional brazo PID</h2>
-        <iframe scrolling="no" id="objViewer" src="https://eliasagustin.github.io/EGraficos/viewer360/prot1.html" title="Viewer" frameborder="0"></iframe>
-        <hr>
+        <app-obj-viewer></app-obj-viewer>
+        <!-- <h2 class="subtitulo-centrado">Primer prototipo funcional brazo PID</h2>
+        <iframe scrolling="no" id="objViewer" src="https://eliasagustin.github.io/EGraficos/viewer360/prot1.html" title="Viewer" frameborder="0"></iframe> -->
         
-        <hr>
         <div class="w3-container texto">
             <br>
             <p>Antes de comenzar a desglosar las partes de este primer prototipo; tales como su funcionamiento, sus componentes, errores/mejoras ...
@@ -85,59 +83,10 @@
                 Una vez estabilizado, desplazar el carro manualmente hacia el otro extremo y soltar.
             </li>
         </ul>
-        <app-video-viewer></app-video-viewer>
+            <app-video-viewer></app-video-viewer>
         <div class="linea"></div>
+            <app-learned-lessons></app-learned-lessons>
 
-        <div class="w3-row">
-            <h2 class="subtitulo">Errores aprendidos y mejoras</h2>
-            <div class="grilla-texto">
-                <div class="item-grilla-preguntas">
-                    <p class="texto">1º Problema<br>
-                        Los sensores elegidos capturan mucho ruido, si bien intenté filtrar la señal suavizando la entrada, llega un punto
-                                                                                        donde el filtrado interfiere con la respuesta del controlador creando delay.</p>
-                </div>
-                <div class="item-grilla-respuestas">
-                    <p class="texto">Solución a implementar:<br>
-                        Para tratar de minimizar el ruido se recomienda implementar el sensor VL53L0X, que utiliza tecnología laser 
-                                                                        para medir distancias menores a 2 metros, de lectura instantanea, con una implementación de código amigable por tener su propia
-                                                                        libreria y otro punto importante es la
-                        <a href="http://robots-argentina.com.ar/didactica/vl53l0x-sensor-de-distancia-que-mide-por-la-velocidad-de-la-luz-time-of-fly/">documentación disponible</a>
-                        en español.
-                    </p>
-                </div>
-                <div class="item-grilla-preguntas">
-                    <p class="texto">2º Problema<br>
-                        La fuerza ejercida por el servomotor con algunos parámetros apalanca el carro proyectandolo al aire.</p>
-                </div>
-                <div class="item-grilla-respuestas">
-                    <p class="texto">Solución a implementar:<br>
-                        Una forma relativamente sencilla de asegurar el carro sin limitar su movimiento, es instalar una varilla de acero 4mm de diámetro, 
-                                                                         en forma paralela a la barra pivotante. También es necesario modificar el diseño del carro, para q dicha varilla atraviese el cuerpo
-                                                                         limitando el moviento vertical del mismo, de esta manera el carro estará siempre en contacto con la barra pivotante.
-                    </p>
-                </div>
-                <div class="item-grilla-preguntas">
-                    <p class="texto">3º Problema<br>
-                        El diseño del carro no contempla la fijación del lastre perdiendo tiempo en tratar de ajustarlo.</p>
-                </div>
-                <div class="item-grilla-respuestas">
-                    <p class="texto">Solución a implementar:<br>
-                        Rediseñar el carro incorporando una cavidad cilíndrica para alojar el lastre, y fijandolo mediante tornillos.
-                    </p>
-                </div>
-                <div class="item-grilla-preguntas">
-                    <p class="texto">4º Problema<br>
-                        Como al modificar las constantes no se implementó ninguna interfaz, estas solo se pueden cambiar con la modificación 
-                                                                        del código fuente luego y resubiendolo.</p>
-                </div>
-                <div class="item-grilla-respuestas">
-                    <p class="texto">Solución a implementar:<br>
-                        Crear una interfaz en windows form para lograr la comunicación serial mediante el puerto USB, ésta debe tener la capacidad de leer/modificar
-                                                                        todas constantes, agregar la capacidad de guardar y graficar tanto el error como setpoint vs tiempo.
-                    </p>
-                </div>
-            </div>
-        </div>
 
         <div class="linea"></div>
         <br>
@@ -148,126 +97,7 @@
 
         <div class="linea"></div>
         <br>
-        <div class="w3-row">
-            <h2 class="subtitulo">Componentes</h2>
-            <div class="grilla-comp">
-                <div class="item-grilla-comp-img">
-                    <img src="./assets/images-articles/ArduinoNano.png">
-                </div>
-                <div class="item-grilla-comp-text">
-                    <p class="texto2">x1 Arduino Nano<br><br>
-                        Microcontrolador: ATmega328P<br>Pines Digitales E/S: 14 (6 para PWM)<br>Velocidad de clock: 16 MHz<br>
-                        Pines Analógicos: 8
-                                                                        Voltaje de alimentación: 7-12V
-                    </p>
-                    <div class="button2" (click)="onClickButtonNewTab('https://listado.mercadolibre.com.ar/arduino-nano#D[A:arduino%20nano]')">
-                        Consultar en Mercadolibre</div>
-                </div>
-            </div>
-            <div class="grilla-comp">
-                <div class="item-grilla-comp-img">
-                    <img src="./assets/images-articles/servoComp.png">
-                </div>
-                <div class="item-grilla-comp-text">
-                    <p class="texto2">x1 Servo Digital Mg996r<br><br>
-                        Torque(@6.0V): 12kg<br>Engranajes: Bronce<br>Rango: 4.8V a 6.0V<br>Angulo de operacion: 180<br>Medidas: 40mm x 20mm x 37mm
-                    </p>
-                    <div class="button2" (click)="onClickButtonNewTab('https://listado.mercadolibre.com.ar/servomotor-mg-996r#D[A:servomotor%20mg%20996r]')">
-                        Consultar en Mercadolibre</div>
-                </div>
-            </div>
-            <div class="grilla-comp">
-                <div class="item-grilla-comp-img">
-                    <img src="./assets/images-articles/sensorComp.png">
-                </div>
-                <div class="item-grilla-comp-text">
-                    <p class="texto2">x2 Sensor ultrasonico HC-SR04<br><br>
-                        Tensión de Operación: 5V DC<br>Rango de medición: 2cm a 450cm<br>Frecuencia de ultrasonido: 40KHz<br>
-                        Rango de medición: 2cm a 450cm<br>Ángulo de apertura: 15°
-                    </p>
-                    <div class="button2" (click)="onClickButtonNewTab('https://listado.mercadolibre.com.ar/sensor-ultrasonido-ultrasonido-hcsr04#D[A:Sensor%20Ultrasonido%20Ultrasonido%20Hcsr04%20]')">
-                        Consultar en Mercadolibre</div>
-                </div>
-            </div>
-            <div class="grilla-comp">
-                <div class="item-grilla-comp-img">
-                    <img src="./assets/images-articles/shieldComp.png">
-                </div>
-                <div class="item-grilla-comp-text">
-                    <p class="texto2">x1 Nano Shield Pro Arduino V3.0<br><br>
-                        Voltaje de funcionamiento: 7-12V<br>Pines para 8 salidas analógicas.<br>Pines para 6 salidas PWM.<br>
-                        Pines para la interfaz I2C.
-                    </p>
-                    <div class="button2" (click)="onClickButtonNewTab('https://listado.mercadolibre.com.ar/nano-shield-pro-arduino-v3.0-expansion#D[A:Nano%20Shield%20Pro%20Arduino%20V3.0%20Expansion]')">
-                        Consultar en Mercadolibre</div>
-                </div>
-            </div>
-            <div class="grilla-comp">
-                <div class="item-grilla-comp-img">
-                    <img src="./assets/images-articles/rodComp.png">
-                </div>
-                <div class="item-grilla-comp-text">
-                    <p class="texto2">4x Rodamiento R 3 Zz<br><br>
-                        Medidas:<br>4.762mm X 12.70mm X 4.98mm<br>
-                        autolubricados<br><br>
-                    </p>
-                    <div class="button2" (click)="onClickButtonNewTab('https://listado.mercadolibre.com.ar/ruleman-r3zz#D[A:ruleman%20r3zz]')">
-                        Consultar en Mercadolibre</div>
-                </div>
-            </div>
-            <div class="grilla-comp">
-                <div class="item-grilla-comp-img">
-                    <img src="./assets/images-articles/rod608zz.png">
-                </div>
-                <div class="item-grilla-comp-text">
-                    <p class="texto2">2x Rodamiento 608Zz<br><br>
-                        Diámetro externo: 22 mm<br>Diámetro interno: 8 mm<br>Material: Acero<br>
-                        autolubricados
-                    </p>
-                    <div class="button2" (click)="onClickButtonNewTab('https://listado.mercadolibre.com.ar/rodamiento-608#D[A:rodamiento%20608]')">
-                        Consultar en Mercadolibre</div>
-                </div>
-            </div>
-            <div class="grilla-comp">
-                <div class="item-grilla-comp-img">
-                    <img src="./assets/images-articles/setpDownComp.png">
-                </div>
-                <div class="item-grilla-comp-text">
-                    <p class="texto2">1x Fuente Step-down Dc-dc Lm2596<br><br>
-                        Input voltage 4V to 40V<br>Gama de voltaje de la salida: 1.25-37VDC ajustable<br>Corriente de salida: 3A<br>Tamaño: 61mm x 34.1mm<br>
-                        Display Voltímetro
-                    </p>
-                    <div class="button2" (click)="onClickButtonNewTab('https://listado.mercadolibre.com.ar/step-down-dc-dc-1%2C25-37v-3a-lm2596#D[A:Step%20Down%20Dc-dc%201,25-37v%203a%20Lm2596]')">
-                        Consultar en Mercadolibre</div>
-                </div>
-            </div>
-            <div class="grilla-comp">
-                <div class="item-grilla-comp-img">
-                    <img src="./assets/images-articles/guiaD52.png">
-                </div>
-                <div class="item-grilla-comp-text">
-                    <p class="texto2">2x Rieles Inferior D-52<br><br>
-                        Modelo Riel d-52, de aluminio anodizado.<br>Largo de cada guia 70cm<br>Este componente que se va utilizar con se corresponder con STLs para imprimir,
-                                                                        de realizar convendria mantener este modelo de ser posible, de lo contrario tendrán que remodelar los STLs.
-                    </p>
-                    <div class="button2" (click)="onClickButtonNewTab('https://listado.mercadolibre.com.ar/riel-inferior-d-52#D[A:Riel%20Inferior%20D-52%20]')">
-                        Consultar en Mercadolibre</div>
-                </div>
-            </div>
-            <div class="grilla-comp">
-                <div class="item-grilla-comp-img">
-                    <img src="./assets/images-articles/wood.png">
-                </div>
-                <div class="item-grilla-comp-text">
-                    <p class="texto2">Madera de Pino<br><br>
-                        Medidas tabla base:<br>&nbsp;&nbsp;10cm X 3.6cm X 45cm<br>
-                        Medidas soporte pivote:<br>&nbsp;&nbsp;6,7cm X 3.6cm X 15,5cm<br>
-                        Medidas soporte servo:<br>&nbsp;&nbsp;6,2cm X 3.6cm X 6,3cm<br>
-                        Aclaración: Las medidas que se pueden intercambiar excepto por el alto del sop. pivote de 15.5cm y el alto del sop. servo de 6.3cm.
-                    </p>
-                </div>
-            </div>
-        </div>
+        <app-materials></app-materials>
 
         <div class="linea"></div>
         <br>
@@ -365,24 +195,7 @@
 
         <div class="linea"></div>
         <br>
-
-        <div class="w3-row">
-            <h2 class="subtitulo">STLs</h2>
-            <p class="subtitulo">Haga click y arrastre el modelo para ver las piezas plásticas necesarias para llevarlo a cabo.
-            </p>
-            <div class="w3-container">
-                <iframe class="iframe1" src="https://myhub.autodesk360.com/ue2d34a2c/shares/public/SH9285eQTcf875d3c5397b7da8716711146e?mode=embed" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" frameborder="0" scrolling="no"></iframe>
-            </div>
-
-            <div class="item-grilla-comp-text">
-                <p>Las piezas fueron impresas en una Ender3; se eligió como material PetG, con un infill de 25%, un wall thickness de 1.4mm, hotbed en 70 centígrados y hotend en 238 centígrados usando el fan al 50%.</p>
-                <div class="button2" (click)="onClickButtonNewTab('https://a360.co/36mesOH')">
-                    Descarga de STLs</div>
-            </div>
-
-
-        </div>
-
+        <app-stl-viewer></app-stl-viewer>
     </article>
 
 

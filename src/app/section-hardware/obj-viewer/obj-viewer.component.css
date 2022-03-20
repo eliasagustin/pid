@@ -1,0 +1,17 @@
+.contenedor {
+  width: fit-content;
+  margin: 0 auto;
+}
+.subtitulo-centrado {
+  text-align: center;
+}
+#objViewer {
+  height: 50vw;
+  border-style: "none";
+  max-height: 455px;
+}
+@media only screen and (min-width: 900px) {
+  #objViewer {
+    width: 900px;
+  }
+}

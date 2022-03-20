@@ -5,12 +5,20 @@ import { SharedModule } from '../shared/shared.module';
 import { SectionHardwareComponent } from './section-hardware/section-hardware.component';
 import { CodeGalleryPaComponent } from './code-gallery-pa/code-gallery-pa.component';
 import { VideoViewerComponent } from './video-viewer/video-viewer.component';
+import { MaterialsComponent } from './materials/materials.component';
+import { LearnedLessonsComponent } from './learned-lessons/learned-lessons.component';
+import { StlViewerComponent } from './stl-viewer/stl-viewer.component';
+import { ObjViewerComponent } from './obj-viewer/obj-viewer.component';
 
 @NgModule({
   declarations: [
     SectionHardwareComponent,
     CodeGalleryPaComponent,
-    VideoViewerComponent
+    VideoViewerComponent,
+    MaterialsComponent,
+    LearnedLessonsComponent,
+    StlViewerComponent,
+    ObjViewerComponent
   ],
   imports: [
     CommonModule,
