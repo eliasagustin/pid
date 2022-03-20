@@ -1,0 +1,14 @@
+<div class="w3-row" *ngFor="let item of videoData">
+    <div class="subtitulo2">{{item.titulo}}</div>
+    <div class="w3-threequarter w3-container texto">
+        <iframe class="iframe1" [src]="myTrustedURL1" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="w3-quarter w3-container">
+        <div class="constantes-video">
+            SP: {{item.sp}}<br>
+            Kp: {{item.kp}}<br>
+            Ki: {{item.ki}}<br>
+            Kd: {{item.kd}}<br>
+        </div>
+    </div>
+</div>

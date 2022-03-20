@@ -26,7 +26,7 @@ export class AppComponent implements OnInit{
     {
       label: ' Destacados',
       icon: 'grid_view',
-      route: 'topics',
+      route: 'section-construc',
     },
     {
       label: ' Documentos',

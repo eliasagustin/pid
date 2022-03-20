@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-section-hardware',
   templateUrl: './section-hardware.component.html',

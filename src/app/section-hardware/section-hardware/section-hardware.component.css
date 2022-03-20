@@ -53,25 +53,6 @@ body {
   padding-bottom: 1px;
 }
 
-.subtitulo2 {
-  text-align: center;
-  font-weight: var(--font-weight-1);
-  font-size: 20px;
-  padding-top: 15px;
-  padding-bottom: 10px;
-}
-
-.constantes-video {
-  background: rgb(200 220 220 / 10%);
-  overflow: visible;
-  font-weight: var(--font-weight-1);
-  padding: 10px 0px 10px 10px;
-  margin-top: 10px;
-  margin-bottom: 30px;
-  line-height: 25px;
-  box-shadow: 0px 0px 10px 1px rgba(0, 255, 255, 0.445);
-}
-
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -287,17 +268,18 @@ transform: translateY(-2px);
     text-align: center;
 }
 
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 1400px) {
   .page {
-    width: 860px;
+    width: 1400px;
   }
 }
 
-@media only screen and (max-width: 360px) {
-  .page {
-    width: 340px;
+ @media only screen and (min-width: 900px) {
+  #objViewer {
+    width: 900px;
+    
   }
-}
+} 
 
 @media only screen and (min-width: 600px) {
   .constantes-video {

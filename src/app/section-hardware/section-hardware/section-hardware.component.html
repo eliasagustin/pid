@@ -9,25 +9,27 @@
 
         <h2 class="subtitulo-centrado">Primer prototipo funcional brazo PID</h2>
         <iframe scrolling="no" id="objViewer" src="https://eliasagustin.github.io/EGraficos/viewer360/prot1.html" title="Viewer" frameborder="0"></iframe>
-
+        <hr>
+        
+        <hr>
         <div class="w3-container texto">
             <br>
             <p>Antes de comenzar a desglosar las partes de este primer prototipo; tales como su funcionamiento, sus componentes, errores/mejoras ...
-                                                                                                                 debemos entender que estamos haciendo.</p>
+                                                                                                                                 debemos entender que estamos haciendo.</p>
             <h2 class="subtitulo">Descripción del dispositivo</h2>
 
             <p>A simple vista se puede observar una barra pivotante de 65 cm de largo, en la cuál se desplaza libremente un carro con una masa aproximada de 150 gr,
-                                                                                                                de manera que al activar al servomotor se cambie la inclinación de la barra, y como consecuencia el carro se desplazará por su
-                                                                                                                energía potencial, buscando llegar hacia un nuevo punto de equilibrio.</p>
+                                                                                                                                de manera que al activar al servomotor se cambie la inclinación de la barra, y como consecuencia el carro se desplazará por su
+                                                                                                                                energía potencial, buscando llegar hacia un nuevo punto de equilibrio.</p>
             <p>Usando los conocimientos de teoría de control y programación, podemos indicarle a éste sistema en qué posición de la barra
-                                                                                                                queremos que el carro encuentre su nuevo punto de equilibrio (se detenga). Dicho punto recibe el nombre de SetPoint. También es importante señalar 
-                                                                                                                otra magnitud importante, que es el Error, y se deriva de la diferencia entre la posición actual del carro y el SetPoint.<br>
+                                                                                                                                queremos que el carro encuentre su nuevo punto de equilibrio (se detenga). Dicho punto recibe el nombre de SetPoint. También es importante señalar 
+                                                                                                                                otra magnitud importante, que es el Error, y se deriva de la diferencia entre la posición actual del carro y el SetPoint.<br>
                 El sistema PID estará siempre buscando eliminar el error, en otras palabras, desplazar el carro hacia el setpoint, enfrentando
-                                                                                                                  perturbaciones externas y ajustándose automáticamente.
-                                                                                                                 Ej de perturbación: Una persona que manualmente mueve el carro fuera de su SetPoint.</p>
+                                                                                                                                  perturbaciones externas y ajustándose automáticamente.
+                                                                                                                                 Ej de perturbación: Una persona que manualmente mueve el carro fuera de su SetPoint.</p>
             <p>Un factor deseado de estos sistemas PID reside en cuán rápido queremos que el sistema responda, si queremos que llegue lentamente y sin pasarse del SP, 
-                                                                                                                 que llegue rápidamente y pasando de largo el SetPoint (momentáneamente) o quizás un intermedio entre los dos comportamientos anteriores.
-                                                                                                                 Eso se logra afinando las constantes (Kp, Kd y Ki) del sistema.</p>
+                                                                                                                                 que llegue rápidamente y pasando de largo el SetPoint (momentáneamente) o quizás un intermedio entre los dos comportamientos anteriores.
+                                                                                                                                 Eso se logra afinando las constantes (Kp, Kd y Ki) del sistema.</p>
         </div>
         <div class="linea"></div>
         <br>
@@ -35,16 +37,16 @@
             <h2 class="subtitulo">¿Cómo se calcula la posición del carro?</h2>
             <div class="w3-threequarter w3-container texto">
                 <p>El dispositivo está capacitado con sensores ultrasónicos en los extremos de la barra, y su utilidad es conocer la
-                                                                                                                                             distancia del carro respecto a los extremos en todo momento. Si bien inicialmente un sensor podría parecer suficiente,
-                                                                                                                                              las limitaciones físicas del sensor ultrasónico y la distancia de la barra obligó a instalar uno en cada extremo.</p>
+                                                                                                                                                                 distancia del carro respecto a los extremos en todo momento. Si bien inicialmente un sensor podría parecer suficiente,
+                                                                                                                                                                  las limitaciones físicas del sensor ultrasónico y la distancia de la barra obligó a instalar uno en cada extremo.</p>
                 <p>El funcionamiento de los sensores ultrasónicos es bastante sencillo en la teoría, cada sensor tiene cabezales cilíndricos,
-                                                                                                                                             uno se encarga de emitir un pin sónico y el otro cabezal cilíndrico actúa de micrófono. La distancia se obteniene 
-                                                                                                                                             al multiplicar la velocidad del sonido (340 m/s) = (0.034 cm/ms(micro segundos)) * (tiempo recorrido del Ping), y todo lo 
-                                                                                                                                              anterior dividido 2 debido a que el Ping hace un viaje de ida y vuelta.</p>
+                                                                                                                                                                 uno se encarga de emitir un pin sónico y el otro cabezal cilíndrico actúa de micrófono. La distancia se obteniene 
+                                                                                                                                                                 al multiplicar la velocidad del sonido (340 m/s) = (0.034 cm/ms(micro segundos)) * (tiempo recorrido del Ping), y todo lo 
+                                                                                                                                                                  anterior dividido 2 debido a que el Ping hace un viaje de ida y vuelta.</p>
 
                 <div class="info">
                     <p>En el caso de que alguien quiera experimentar con estos sensores en arduino, les comparto un código básico para visualizar 
-                                                                                                la distancia por el puerto serial.</p>
+                                                                                                                        la distancia por el puerto serial.</p>
                     <div class="button" (click)="onClickButtonNewTab('https://raw.githubusercontent.com/eliasagustin/pid/main/src/assets/codes/sensor_de_distancia_ultrasonico.ino')">
                         Abrir código</div>
                 </div>
@@ -65,7 +67,7 @@
             <h2>Método usado para las pruebas</h2>
         </div>
         <p class="w3-container texto">Para estudiar el comportamiento de los controladores PID ante diferentes constantes,
-                                                                        se ha seguido la siguiente metodología:
+                                                                                    se ha seguido la siguiente metodología:
         </p>
         <ul class="item-list">
             <li>
@@ -83,34 +85,7 @@
                 Una vez estabilizado, desplazar el carro manualmente hacia el otro extremo y soltar.
             </li>
         </ul>
-        <div class="w3-row">
-            <div class="subtitulo2">Primer Ejecución, variando constantes Kp</div>
-            <div class="w3-threequarter w3-container texto">
-                <iframe class="iframe1" src="https://www.youtube.com/embed/sM9FfloOZU8" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="w3-quarter w3-container">
-                <div class="constantes-video">
-                    SP: 24<br>
-                    Kp: [2..11]<br>
-                    Ki: 0<br>
-                    Kd: 0<br>
-                </div>
-            </div>
-        </div>
-        <div class="w3-row">
-            <div class="subtitulo2">Segunda Ejecución, variando constantes Kd</div>
-            <div class="w3-threequarter w3-container texto">
-                <iframe class="iframe1" src="https://www.youtube.com/embed/5Xe3bkG6Jmg" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="w3-quarter w3-container">
-                <div class="constantes-video">
-                    SP: 24<br>
-                    Kp: 10<br>
-                    Ki: 0<br>
-                    Kd: [1, 10, 50, 100, 200, 250]<br>
-                </div>
-            </div>
-        </div>
+        <app-video-viewer></app-video-viewer>
         <div class="linea"></div>
 
         <div class="w3-row">
@@ -119,13 +94,13 @@
                 <div class="item-grilla-preguntas">
                     <p class="texto">1º Problema<br>
                         Los sensores elegidos capturan mucho ruido, si bien intenté filtrar la señal suavizando la entrada, llega un punto
-                                                                donde el filtrado interfiere con la respuesta del controlador creando delay.</p>
+                                                                                        donde el filtrado interfiere con la respuesta del controlador creando delay.</p>
                 </div>
                 <div class="item-grilla-respuestas">
                     <p class="texto">Solución a implementar:<br>
                         Para tratar de minimizar el ruido se recomienda implementar el sensor VL53L0X, que utiliza tecnología laser 
-                                                para medir distancias menores a 2 metros, de lectura instantanea, con una implementación de código amigable por tener su propia
-                                                libreria y otro punto importante es la
+                                                                        para medir distancias menores a 2 metros, de lectura instantanea, con una implementación de código amigable por tener su propia
+                                                                        libreria y otro punto importante es la
                         <a href="http://robots-argentina.com.ar/didactica/vl53l0x-sensor-de-distancia-que-mide-por-la-velocidad-de-la-luz-time-of-fly/">documentación disponible</a>
                         en español.
                     </p>
@@ -137,8 +112,8 @@
                 <div class="item-grilla-respuestas">
                     <p class="texto">Solución a implementar:<br>
                         Una forma relativamente sencilla de asegurar el carro sin limitar su movimiento, es instalar una varilla de acero 4mm de diámetro, 
-                                                 en forma paralela a la barra pivotante. También es necesario modificar el diseño del carro, para q dicha varilla atraviese el cuerpo
-                                                 limitando el moviento vertical del mismo, de esta manera el carro estará siempre en contacto con la barra pivotante.
+                                                                         en forma paralela a la barra pivotante. También es necesario modificar el diseño del carro, para q dicha varilla atraviese el cuerpo
+                                                                         limitando el moviento vertical del mismo, de esta manera el carro estará siempre en contacto con la barra pivotante.
                     </p>
                 </div>
                 <div class="item-grilla-preguntas">
@@ -153,12 +128,12 @@
                 <div class="item-grilla-preguntas">
                     <p class="texto">4º Problema<br>
                         Como al modificar las constantes no se implementó ninguna interfaz, estas solo se pueden cambiar con la modificación 
-                                                del código fuente luego y resubiendolo.</p>
+                                                                        del código fuente luego y resubiendolo.</p>
                 </div>
                 <div class="item-grilla-respuestas">
                     <p class="texto">Solución a implementar:<br>
                         Crear una interfaz en windows form para lograr la comunicación serial mediante el puerto USB, ésta debe tener la capacidad de leer/modificar
-                                                todas constantes, agregar la capacidad de guardar y graficar tanto el error como setpoint vs tiempo.
+                                                                        todas constantes, agregar la capacidad de guardar y graficar tanto el error como setpoint vs tiempo.
                     </p>
                 </div>
             </div>
@@ -167,9 +142,8 @@
         <div class="linea"></div>
         <br>
         <div class="w3-row">
-            <h2 class="subtitulo">Código</h2>
-            
-            <app-code-viewer></app-code-viewer>
+            <h2 class="subtitulo">Códigos usados en este proyecto</h2>
+            <app-code-gallery-pa></app-code-gallery-pa>
         </div>
 
         <div class="linea"></div>
@@ -184,7 +158,7 @@
                     <p class="texto2">x1 Arduino Nano<br><br>
                         Microcontrolador: ATmega328P<br>Pines Digitales E/S: 14 (6 para PWM)<br>Velocidad de clock: 16 MHz<br>
                         Pines Analógicos: 8
-                                                Voltaje de alimentación: 7-12V
+                                                                        Voltaje de alimentación: 7-12V
                     </p>
                     <div class="button2" (click)="onClickButtonNewTab('https://listado.mercadolibre.com.ar/arduino-nano#D[A:arduino%20nano]')">
                         Consultar en Mercadolibre</div>
@@ -274,7 +248,7 @@
                 <div class="item-grilla-comp-text">
                     <p class="texto2">2x Rieles Inferior D-52<br><br>
                         Modelo Riel d-52, de aluminio anodizado.<br>Largo de cada guia 70cm<br>Este componente que se va utilizar con se corresponder con STLs para imprimir,
-                                                de realizar convendria mantener este modelo de ser posible, de lo contrario tendrán que remodelar los STLs.
+                                                                        de realizar convendria mantener este modelo de ser posible, de lo contrario tendrán que remodelar los STLs.
                     </p>
                     <div class="button2" (click)="onClickButtonNewTab('https://listado.mercadolibre.com.ar/riel-inferior-d-52#D[A:Riel%20Inferior%20D-52%20]')">
                         Consultar en Mercadolibre</div>
@@ -307,8 +281,8 @@
             </div>
             <div class="w3-container">
                 <p class="texto">Se recomienda usar una fuente mayor >= 12v 1a, el step-down como la placa expansora tienen sus propios reguladores de voltaje para evitar voltajes irregulares,
-                                     que se puede dar cuando se aplica una alta exigencia al servo motor.
-                                     Tanto el servomotor como la placa expansora les llega un voltaje regulado de 6 volts.
+                                                         que se puede dar cuando se aplica una alta exigencia al servo motor.
+                                                         Tanto el servomotor como la placa expansora les llega un voltaje regulado de 6 volts.
 
                 </p>
 
@@ -397,16 +371,15 @@
             <p class="subtitulo">Haga click y arrastre el modelo para ver las piezas plásticas necesarias para llevarlo a cabo.
             </p>
             <div class="w3-container">
-                <iframe class="iframe1" src="https://myhub.autodesk360.com/ue2d34a2c/shares/public/SH9285eQTcf875d3c5397b7da8716711146e?mode=embed"  
-                allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" frameborder="0" scrolling="no"></iframe>
+                <iframe class="iframe1" src="https://myhub.autodesk360.com/ue2d34a2c/shares/public/SH9285eQTcf875d3c5397b7da8716711146e?mode=embed" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" frameborder="0" scrolling="no"></iframe>
             </div>
-           
+
             <div class="item-grilla-comp-text">
                 <p>Las piezas fueron impresas en una Ender3; se eligió como material PetG, con un infill de 25%, un wall thickness de 1.4mm, hotbed en 70 centígrados y hotend en 238 centígrados usando el fan al 50%.</p>
                 <div class="button2" (click)="onClickButtonNewTab('https://a360.co/36mesOH')">
                     Descarga de STLs</div>
             </div>
-                
+
 
         </div>
 
