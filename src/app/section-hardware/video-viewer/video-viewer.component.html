@@ -1,32 +1,66 @@
 <div class="w3-row">
 
-    <div class="subtitulo2">{{videoData[0].titulo}}</div>
+    <div class="subtitulo">
+        <h2>Método usado en las pruebas</h2>
+    </div>
+
+
     <div class="contenedor">
-        <div class="w3-threequarter w3-container texto">
-            <iframe class="iframe1" [src]="myTrustedURL1" frameborder="0" allowfullscreen></iframe>
+        <p class="w3-container texto item-list">Para estudiar el comportamiento de los controladores PID ante diferentes constantes,
+                                                                                                    se ha seguido la siguiente metodología:
+        </p>
+        <ul class="item-list">
+            <li>
+                Abrimos el codigo del repositorio, desde Arduino IDE, modificando
+                <b>solo</b>
+                las constantes  (setPoint, Kp, Ki, Kd).
+            </li>
+            <li>
+                Aseguramos el dispositivo, compilamos el codigo y dejamos conectado el usb, para visualizar el setPoint y el error medido.
+            </li>
+            <li>
+                Una vez estabilizado, para perturbar el sistema se desplaza manualmente el carro hacia un extremo de la barra y soltar.
+            </li>
+            <li>
+                Una vez estabilizado, desplazar el carro manualmente hacia el otro extremo y soltar.
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="card">
+<div class="w3-row recuadro">
+    <div class="subtitulo2">{{videoData[0].titulo}}</div>
+    <div class="grilla">
+
+
+        <div class="contenedor-video">
+            <iframe class="iframe" [src]="myTrustedURL1" frameborder="0" allowfullscreen></iframe>
         </div>
-        <div class="w3-quarter w3-container">
+        <div class="contenedor-info">
             <div class="constantes-video">
                 SP:
                 {{videoData[0].sp}}<br>
                 Kp:
                 {{videoData[0].kp}}<br>
                 Ki:
-                {{videoData[0].ki}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                {{videoData[0].ki}}<br>
                 Kd:
                 {{videoData[0].kd}}<br>
             </div>
         </div>
+
     </div>
 </div>
-<div class="w3-row">
-
+</div>
+<div class="w3-row recuadro">
     <div class="subtitulo2">{{videoData[1].titulo}}</div>
-    <div class="contenedor">
-        <div class="w3-threequarter w3-container texto">
-            <iframe class="iframe1" [src]="myTrustedURL2" frameborder="0" allowfullscreen></iframe>
+    <div class="grilla">
+
+
+        <div class="contenedor-video">
+            <iframe class="iframe" [src]="myTrustedURL2" frameborder="0" allowfullscreen></iframe>
         </div>
-        <div class="w3-quarter w3-container">
+        <div class="contenedor-info">
             <div class="constantes-video">
                 SP:
                 {{videoData[1].sp}}<br>
@@ -38,5 +72,6 @@
                 {{videoData[1].kd}}<br>
             </div>
         </div>
+
     </div>
 </div>

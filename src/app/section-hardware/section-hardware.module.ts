@@ -9,6 +9,7 @@ import { MaterialsComponent } from './materials/materials.component';
 import { LearnedLessonsComponent } from './learned-lessons/learned-lessons.component';
 import { StlViewerComponent } from './stl-viewer/stl-viewer.component';
 import { ObjViewerComponent } from './obj-viewer/obj-viewer.component';
+import { CircuitoComponent } from './circuito/circuito.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ObjViewerComponent } from './obj-viewer/obj-viewer.component';
     MaterialsComponent,
     LearnedLessonsComponent,
     StlViewerComponent,
-    ObjViewerComponent
+    ObjViewerComponent,
+    CircuitoComponent
   ],
   imports: [
     CommonModule,

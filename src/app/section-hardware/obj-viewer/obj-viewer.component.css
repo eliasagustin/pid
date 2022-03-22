@@ -1,17 +1,41 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    /* background: #2a2d2f; */
+    color: #eee;
+  }
+  
+  :root {
+    --color-1: #026aa7;
+    --color-2: #e4f0f6;
+    --color-3: #fafbfc;
+    --color-4: #5e6c84;
+    --color-5: #4ca03b;
+    --font-family-1: "Poppins", "sans-serif";
+    --box-shadow-1: rgb(0 0 0 / 10%) 0 0 10px;
+    --font-size-1: 1rem;
+    --font-size-2: 1.2rem;
+    --border-radius: 3px;
+    --font-weight-1: 300;
+  }
+
 .contenedor {
-  width: fit-content;
-  margin: 0 auto;
+  display: grid;
+  
 }
 .subtitulo-centrado {
   text-align: center;
 }
 #objViewer {
-  height: 50vw;
+  margin: 0 auto 10px;
+  height: 40vw;
+  width: 80%;
   border-style: "none";
-  max-height: 455px;
+  background-color: #1b1b1b42;
 }
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1200px) {
   #objViewer {
     width: 900px;
+    max-height: 486px;
   }
 }

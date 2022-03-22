@@ -3,31 +3,28 @@
 
         <header>
             <h1 id="titulo" class="page-title">Hardware Desarrollado - Prototipos</h1>
-            <!-- <div class="linea"></div> -->
 
         </header>
         <app-obj-viewer></app-obj-viewer>
-        <!-- <h2 class="subtitulo-centrado">Primer prototipo funcional brazo PID</h2>
-        <iframe scrolling="no" id="objViewer" src="https://eliasagustin.github.io/EGraficos/viewer360/prot1.html" title="Viewer" frameborder="0"></iframe> -->
         
         <div class="w3-container texto">
             <br>
             <p>Antes de comenzar a desglosar las partes de este primer prototipo; tales como su funcionamiento, sus componentes, errores/mejoras ...
-                                                                                                                                 debemos entender que estamos haciendo.</p>
+                debemos entender que estamos haciendo.</p>
             <h2 class="subtitulo">Descripción del dispositivo</h2>
 
             <p>A simple vista se puede observar una barra pivotante de 65 cm de largo, en la cuál se desplaza libremente un carro con una masa aproximada de 150 gr,
-                                                                                                                                de manera que al activar al servomotor se cambie la inclinación de la barra, y como consecuencia el carro se desplazará por su
-                                                                                                                                energía potencial, buscando llegar hacia un nuevo punto de equilibrio.</p>
+                de manera que al activar al servomotor se cambie la inclinación de la barra, y como consecuencia el carro se desplazará por su
+                energía potencial, buscando llegar hacia un nuevo punto de equilibrio.</p>
             <p>Usando los conocimientos de teoría de control y programación, podemos indicarle a éste sistema en qué posición de la barra
-                                                                                                                                queremos que el carro encuentre su nuevo punto de equilibrio (se detenga). Dicho punto recibe el nombre de SetPoint. También es importante señalar 
-                                                                                                                                otra magnitud importante, que es el Error, y se deriva de la diferencia entre la posición actual del carro y el SetPoint.<br>
+                queremos que el carro encuentre su nuevo punto de equilibrio (se detenga). Dicho punto recibe el nombre de SetPoint. También es importante señalar 
+                otra magnitud importante, que es el Error, y se deriva de la diferencia entre la posición actual del carro y el SetPoint.<br>
                 El sistema PID estará siempre buscando eliminar el error, en otras palabras, desplazar el carro hacia el setpoint, enfrentando
-                                                                                                                                  perturbaciones externas y ajustándose automáticamente.
-                                                                                                                                 Ej de perturbación: Una persona que manualmente mueve el carro fuera de su SetPoint.</p>
+                perturbaciones externas y ajustándose automáticamente.
+                 Ej de perturbación: Una persona que manualmente mueve el carro fuera de su SetPoint.</p>
             <p>Un factor deseado de estos sistemas PID reside en cuán rápido queremos que el sistema responda, si queremos que llegue lentamente y sin pasarse del SP, 
-                                                                                                                                 que llegue rápidamente y pasando de largo el SetPoint (momentáneamente) o quizás un intermedio entre los dos comportamientos anteriores.
-                                                                                                                                 Eso se logra afinando las constantes (Kp, Kd y Ki) del sistema.</p>
+                que llegue rápidamente y pasando de largo el SetPoint (momentáneamente) o quizás un intermedio entre los dos comportamientos anteriores.
+                Eso se logra afinando las constantes (Kp, Kd y Ki) del sistema.</p>
         </div>
         <div class="linea"></div>
         <br>
@@ -35,16 +32,16 @@
             <h2 class="subtitulo">¿Cómo se calcula la posición del carro?</h2>
             <div class="w3-threequarter w3-container texto">
                 <p>El dispositivo está capacitado con sensores ultrasónicos en los extremos de la barra, y su utilidad es conocer la
-                                                                                                                                                                 distancia del carro respecto a los extremos en todo momento. Si bien inicialmente un sensor podría parecer suficiente,
-                                                                                                                                                                  las limitaciones físicas del sensor ultrasónico y la distancia de la barra obligó a instalar uno en cada extremo.</p>
+                   distancia del carro respecto a los extremos en todo momento. Si bien inicialmente un sensor podría parecer suficiente,
+                   las limitaciones físicas del sensor ultrasónico y la distancia de la barra obligó a instalar uno en cada extremo.</p>
                 <p>El funcionamiento de los sensores ultrasónicos es bastante sencillo en la teoría, cada sensor tiene cabezales cilíndricos,
-                                                                                                                                                                 uno se encarga de emitir un pin sónico y el otro cabezal cilíndrico actúa de micrófono. La distancia se obteniene 
-                                                                                                                                                                 al multiplicar la velocidad del sonido (340 m/s) = (0.034 cm/ms(micro segundos)) * (tiempo recorrido del Ping), y todo lo 
-                                                                                                                                                                  anterior dividido 2 debido a que el Ping hace un viaje de ida y vuelta.</p>
+                    uno se encarga de emitir un pin sónico y el otro cabezal cilíndrico actúa de micrófono. La distancia se obteniene 
+                    al multiplicar la velocidad del sonido (340 m/s) = (0.034 cm/ms(micro segundos)) * (tiempo recorrido del Ping), y todo lo 
+                    anterior dividido 2 debido a que el Ping hace un viaje de ida y vuelta.</p>
 
                 <div class="info">
                     <p>En el caso de que alguien quiera experimentar con estos sensores en arduino, les comparto un código básico para visualizar 
-                                                                                                                        la distancia por el puerto serial.</p>
+                        la distancia por el puerto serial.</p>
                     <div class="button" (click)="onClickButtonNewTab('https://raw.githubusercontent.com/eliasagustin/pid/main/src/assets/codes/sensor_de_distancia_ultrasonico.ino')">
                         Abrir código</div>
                 </div>
@@ -60,33 +57,12 @@
 
 
         <div class="linea"></div>
-
-        <div class="subtitulo">
-            <h2>Método usado para las pruebas</h2>
-        </div>
-        <p class="w3-container texto">Para estudiar el comportamiento de los controladores PID ante diferentes constantes,
-                                                                                    se ha seguido la siguiente metodología:
-        </p>
-        <ul class="item-list">
-            <li>
-                Abrimos el codigo del repositorio, desde Arduino IDE, modificando
-                <b>solo</b>
-                las constantes  (setPoint, Kp, Ki, Kd).
-            </li>
-            <li>
-                Aseguramos el dispositivo, compilamos el codigo y dejamos conectado el usb, para visualizar el setPoint y el error medido.
-            </li>
-            <li>
-                Una vez estabilizado, para perturbar el sistema se desplaza manualmente el carro hacia un extremo de la barra y soltar.
-            </li>
-            <li>
-                Una vez estabilizado, desplazar el carro manualmente hacia el otro extremo y soltar.
-            </li>
-        </ul>
+        
             <app-video-viewer></app-video-viewer>
-        <div class="linea"></div>
-            <app-learned-lessons></app-learned-lessons>
 
+        <div class="linea"></div>
+
+            <app-learned-lessons></app-learned-lessons>
 
         <div class="linea"></div>
         <br>
@@ -102,96 +78,8 @@
         <div class="linea"></div>
         <br>
 
-        <div class="w3-row">
-            <h2 class="subtitulo">Esquema de Conexiones</h2>
-            <div class="w3-container">
-                <div class="image-container1">
-                    <img src="./assets/images-articles/Esquema.png">
-                </div>
-            </div>
-            <div class="w3-container">
-                <p class="texto">Se recomienda usar una fuente mayor >= 12v 1a, el step-down como la placa expansora tienen sus propios reguladores de voltaje para evitar voltajes irregulares,
-                                                         que se puede dar cuando se aplica una alta exigencia al servo motor.
-                                                         Tanto el servomotor como la placa expansora les llega un voltaje regulado de 6 volts.
-
-                </p>
-
-                <table id="conex-table" class="table">
-                    <thead>
-                        <th data-field="Conex">Conexión</th>
-                        <th data-field="plcExp">Expansion Shield v3</th>
-                        <th data-field="sensA">HC-SR04 A</th>
-                        <th data-field="sensB">HC-SR04 B</th>
-                        <th data-field="servo">Servo-Motor</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Pin 5 volts</td>
-                            <td>Pin Vcc</td>
-                            <td>Pin Vcc</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Pin GND</td>
-                            <td>Pin GND</td>
-                            <td>Pin GND</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Pin 5</td>
-                            <td>Pin Echo</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Pin 6</td>
-                            <td>Pin Trig</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Pin 9</td>
-                            <td></td>
-                            <td>Pin Trig</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>Pin 10</td>
-                            <td></td>
-                            <td>Pin Echo</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>Pin 8</td>
-                            <td></td>
-                            <td></td>
-                            <td>Cable Naranja</td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>6v Cable Rojo</td>
-                        </tr>
-                        <tr>
-                            <td>9</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>GND Cable Blanco</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <app-circuito></app-circuito>
+        
 
         <div class="linea"></div>
         <br>
