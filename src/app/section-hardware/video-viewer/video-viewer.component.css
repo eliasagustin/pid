@@ -75,11 +75,11 @@ ul li {
   padding: 10px;
   list-style-type: none;
   line-height: 25px;
-  background: rgba(0, 0, 0, 0.247);
+  background: rgba(8, 8, 8, 0.411);
 }
 
 ul {
-  background: rgba(129, 211, 211, 0.055);
+  background: rgba(129, 211, 211, 0.137);
   padding: 20px;
   width: 100%;
   margin: 0 auto;
@@ -105,7 +105,7 @@ ul {
 
 .recuadro {
   border-radius: 10px;
-  background: rgba(0, 0, 0, 0.247);
+  background: rgba(8, 8, 8, 0.411);
   max-width: 1134px;
   margin: 0 auto;
   padding: 15px;

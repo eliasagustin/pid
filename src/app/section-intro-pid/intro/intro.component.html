@@ -1,0 +1,36 @@
+<h2 class="subtitulo">Introducción a controladores PID</h2>
+            
+        <div class="w3-row">
+            <div class="w3-threequarter w3-container texto">
+                <p>Este apartado está enfocado a la compresión de un controlador PID; y para lograrlo
+                     debemos entender la razón por la cual se debería usar un controlador PID en vez de un simple botón ON/OFF.</p>
+                <p>Para empezar, tratemos de imaginar la calefacción centralizada de un casa familiar, compuesta por un calefactor que distribuye uniformemente el calor
+                    por la casa, haciendo uso del control de temperatura (termostato). Este posee un sensor (VP - variable de proceso) 
+                    que mide la temperatura de toda la casa, luego compara esta medida con un punto fijo ajustable (SP - Setpoint).
+                </p>
+                <p>Si la temperatura está por debajo del Setpoint, el calefactor se encenderá ON, y cuando la temperatura sobrepase nuestro SP,
+                     la calefacción centralizada se apagará OFF.</p>
+                <p>Y debido a su simpleza recibe el nombre de Controlador ON/OFF ó control Bang-Bang.</p>
+            </div>
+            <div class="w3-quarter w3-container w3-hide-small">
+                <div class="img2">
+                    <img class="imagen-chica" src="./assets/images-articles/termostato.png" alt="PID control - Tank valve">
+                </div>
+                
+            </div>
+            <div class="image-container4">
+                <img class="imagen-grande" src="./assets/images-articles/ControlOnOff.png">
+            </div>
+            <div class="w3-container">
+                <p>
+                Este control se puede permitir en un hogar, pero en aparatos de precisión como un <a href="https://es.wikipedia.org/wiki/Sistema_quir%C3%BArgico_Da_Vinci">brazo cirujano</a> 
+                , sobre todo en fábricas e industrias, es donde se vuelve indispensable contar con los controladores pid, consiguiendo eliminar las oscilaciones del control ON/OFF aparte de eliminar en forma mucho más significativa el error en estado estable. 
+                
+                </p>
+                <div class="nota-texto">
+                    <p>Debido a que cada proceso responde de manera diferente, el controlador PID determina
+                         cuánto y con qué rapidez se aplica la corrección mediante el uso de cantidades variables de acción 
+                         Proporcional, Integral y Derivativa.</p>
+                </div>
+            </div>
+        </div>

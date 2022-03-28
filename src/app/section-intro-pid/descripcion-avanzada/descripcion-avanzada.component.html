@@ -1,0 +1,98 @@
+<div class="subtitulo">
+    <h2>Diagrama de Bloque lazo cerrado</h2>
+</div>
+
+<div class="w3-row">
+    <div class="w3-threequarter w3-container ">
+        <p>
+            El control PID combina acciones proporcionales, integrales y derivadas para generar una única señal 
+                                    de control, donde cada acción tiene una característica fuerte que ayuda a controlar la salida. La acción 
+                                    proporcional hace que el sistema reaccione al presente error, permitiendo una acción inmediata ante 
+                                    variaciones o perturbaciones; La acción integral elimina los errores de estado estacionario a largo
+                                        plazo, y la acción Derivativa anticipa el comportamiento del proceso (BAZANELLA, 2005).
+        </p>
+    </div>
+    <div class="w3-quarter w3-container w3-hide-small">
+        <div class="image-container4">
+            <img class="imagen-chica" src="./assets/images-articles/PID_Dibujo.png">
+        </div>
+    </div>
+
+    <div class="image-container1">
+        <div class="img1">
+            <img src="./assets/images-articles/PID_DiagramaBloque.png">
+        </div>
+    </div>
+</div>
+<div class="subtitulo-centrado">
+    <h3>Acción Proporcional (Kp)</h3>
+</div>
+<div class="w3-row">
+    <div class="w3-half w3-container">
+        <div class="image-container3">
+            <img class="imagen-mid" src="https://www.novusautomation.com/Imagens/Art_controladores_3.png">
+        </div>
+    </div>
+    <div class="w3-half w3-container ">
+
+        <p>
+            Hay un límite máximo y mínimo para aplicar la señal MV (Variable Manipulada) por razones de restricción física y de seguridad: este rango operativo se llama Banda Proporcional. Si la señal de control opera fuera de rango, se dice que está saturada y opera con un comportamiento no lineal. Cuanto más grande sea el valor de la acción proporcional, más pequeña será la banda proporcional y mayor será la energía de control. Esto hace que el sistema responda más rápidamente, pero la señal de salida puede exceder o caer por debajo del punto de ajuste de estado estable, y el error nunca se borrará por completo.
+        </p>
+    </div>
+</div>
+<br>
+<div class="subtitulo-centrado">
+    <h3>Acción Integral (Ti)</h3>
+</div>
+<div class="w3-row">
+    <div class="w3-half w3-container">
+        <div class="image-container3">
+            <img class="imagen-mid" src="https://www.novusautomation.com/Imagens/Art_controladores_4.png">
+        </div>
+    </div>
+    <div class="w3-half w3-container ">
+        <p>
+            Cuando la acción integral se aplica de forma aislada, la estabilidad relativa del sistema empeora, pero cuando se usa junto con la acción proporcional, ayuda a anular el error de forma permanente. Cuanto más grande sea el valor integral, más tiempo le tomará al sistema alcanzar el punto de ajuste de estado estable.
+        </p>
+    </div>
+</div>
+<br>
+<div class="subtitulo-centrado">
+    <h3>Acción Derivativa (Td)</h3>
+</div>
+<div class="w3-row">
+    <div class="w3-half w3-container">
+        <div class="image-container3">
+            <img class="imagen-mid" src="https://www.novusautomation.com/Imagens/Art_controladores_5.png">
+        </div>
+    </div>
+    <div class="w3-half w3-container ">
+        <p>
+            El proceso generalmente tiene una inercia con respecto a los cambios en la MV (Variable Manipulada), es decir, el tiempo que un cambio en la entrada del proceso provoca un cambio en la salida. La acción derivativa anticipa la acción de control para que el proceso reaccione más rápido de lo habitual, esta acción predictiva aumenta la estabilidad relativa del sistema y hace que la respuesta sea más rápida y menos oscilatoria a medida que pasa el tiempo. En estado estacionario, esta acción será nula porque el valor del error será constante.
+        </p>
+        <br>
+    </div>
+</div>
+<div class="w3-row">
+    <div class="contenedor">
+
+        <p>La ecuación matemática para calcular la señal de control MV (Variable Manipulada) se muestra a continuación, donde los parámetros Kp, Ti y Td están relacionados. El valor de error, representado como "e" en la ecuación, es utilizado por cada acción de control para generar la señal.</p>
+        <div class="image-container1">
+            <div class="img1">
+                <img src="./assets/images-articles/formulaPID.png">
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="w3-row">
+    <div class="w3-container">
+
+        <p>Por lo tanto, el control PID combina las tres acciones descritas, y cada una compensa la característica indeseable de la otra. La acción integral en estado estable anula el error, y la acción derivativa suprime el efecto oscilatorio de la acción integral, ya que el efecto anticipado agiliza la respuesta y aumenta la estabilidad relativa del sistema. La acción proporcional cambia la rapidez con la que se recupera el punto de ajuste. Estos comportamientos descritos se pueden observar aumentando el valor de cada acción individualmente en el proceso.</p>
+        <div class="image-container2">
+            <div class="img2">
+                <img src="https://www.novusautomation.com/Imagens/art_controladores_7.png">
+            </div>
+        </div>
+    </div>
+</div>

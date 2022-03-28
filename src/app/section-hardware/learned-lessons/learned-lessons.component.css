@@ -34,8 +34,9 @@
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       margin: 15px;
-      background-color: rgba(8, 8, 8, 0.24);
+      background-color: rgba(8, 8, 8, 0.411);
       padding:15px;
+      border-radius: 15px;
   }
   .item-grilla-preguntas {
       grid-column: 1/6;

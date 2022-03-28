@@ -1,31 +1,25 @@
-
-    <div class="allCards" >
-
-        <section class="cards">
-            
-            <div class="card2" *ngFor="let item of tarjeta">
-                <br>
-                <div class="card__image-container">
-                    <div class="card__image-mascara">
-                        <img appImgBroken src="{{item.imagen}}">
-                    </div>
-                </div>
-
-                <div class="card_content">
-                    <p class="card_title text--medium">
-                        {{item.titulo}}
-                    </p>
-                    <div class="card_info">
-                        <p class="text--medium">
-                            {{item.subTitulo}}
-                        </p>
-                        <p class="card_info2 text--medium" (click)="onClickButtonNewTab(item.enlace)">
-                            Repo
-                        </p>
-                    </div>
+<div class="allCards">
+    <section class="cards">
+        <div class="card2" *ngFor="let item of tarjeta">
+            <br>
+            <div class="card__image-container">
+                <div class="card__image-mascara">
+                    <img appimgbroken src="{{item.imagen}}">
                 </div>
             </div>
-
-        </section>
-
-    </div>
+            <div class="card_content">
+                <p class="card_title text--medium">
+                    {{item.titulo}}
+                </p>
+                <div class="card_info">
+                    <p class="text--medium">
+                        {{item.subTitulo}}
+                    </p>
+                    <p class="card_info2 text--medium" (click)="onClickButtonNewTab(item.enlace)">
+                        Repo
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

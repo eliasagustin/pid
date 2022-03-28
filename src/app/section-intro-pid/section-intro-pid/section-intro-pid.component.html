@@ -2,206 +2,29 @@
     <article class="page">
 
         <header>
+            <h1 id="titulo" class="page-title">Entendiendo un controlador PID</h1>
+
+        </header>
+        <!-- <header>
             <h1 class="page-title">Entendiendo un controlador PID</h1>
             <div class="linea"></div>
             
-        </header>
+        </header> -->
 
-        <h2 class="subtitulo">Introducción a controladores PID</h2>
-            
-        <div class="w3-row">
-            <div class="w3-threequarter w3-container texto">
-                <p>Este apartado está enfocado en la compresión de un controlador PID; y para lograrlo
-                     debemos entender la razón por la cual se debería usar un controlador PID en vez de un simple botón ON/OFF.</p>
-                <p>Para empezar, tratemos de imaginar una calefacción centralizada de un casa familiar, dicho calefactor distribuye el calor
-                    por la casa a todos sus rincones, haciendo uso del control de temperatura (termostato). Este posee un sensor (VP - variable de proceso) 
-                    que mide la temperatura de la casa, luego compara esta medida con un punto fijo ajustable (SP - Setpoint).
-                </p>
-                <p>Si la temperatura está por debajo del Setpoint, el calefactor se encenderá ON, y cuando la temperatura sobrepase nuestro SP,
-                     la calefacción centralizada se apagará OFF.</p>
-                <p>Y debido a su simpleza recibe el nombre de Controlador ON/OFF ó control Bang-Bang</p>
-            </div>
-            <div class="w3-quarter w3-container w3-hide-small">
-                <div class="image-container3">
-                    <img class="imagen-chica" src="./assets/images-articles/termostato.png" alt="PID control - Tank valve">
-                </div>
-                
-            </div>
-            <div class="image-container4">
-                <img src="./assets/images-articles/ControlOnOff.png">
-            </div>
-            <div class="w3-container">
-                <p>
-                Este control se puede permitir en un hogar, pero en aparatos de precisión como un <a href="https://es.wikipedia.org/wiki/Sistema_quir%C3%BArgico_Da_Vinci">brazo cirujano</a> 
-                , sobre todo en fábricas e industrias, es donde se vuelve indispensable contar con los controladores pid, consiguiendo eliminar las oscilaciones del control ON/OFF aparte de eliminar en forma mucho más significativa el error en estado estable. 
-                
-                </p>
-                <div class="nota-texto">
-                    <p>Debido a que cada proceso responde de manera diferente, el controlador PID determina
-                         cuánto y con qué rapidez se aplica la corrección mediante el uso de cantidades variables de acción 
-                         Proporcional, Integral y Derivativa.</p>
-                </div>
-            </div>
-        </div>
+        <app-intro></app-intro>
         <br>
         <br>
         <div class="linea"></div>
-        <div class="w3-row">
-            <h2 class="subtitulo-centrado">Qué es un PID</h2>
-            <div class="w3-quarter w3-container w3-hide-small">
-                <div class="image-container2">
-                    
-                    <img class="imagen-chica" src="./assets/images-articles/Curva_PID_sinFondo.png" alt="PID control - Tank valve">
-                </div>
-                <!-- <div class="image-container1">
-                    <img src="./PIDconFondo.png">
-                </div> -->
-            </div>
-            <div class="w3-threequarter w3-container texto">
-                <div class="texto-f1">
-                    <p>El <b>control PID</b> es un mecanismo de control, que a través de un <b>lazo de retroalimentación</b> permite regular la velocidad, temperatura, presión y flujo entre otras variables, de un proceso en general.</p>
-                    <p>Este controlador calcula la diferencia entre nuestra variable real <em>(lo que estamos midiendo)</em> contra la variable deseada.</p>
-                    <p class="note">Este controlador puede aplicarse a cualquier sistema o aplicación. Se usa comúnmente para controlar la posición de algún elemento mecánico, como puede ser un servomotor. Sin embargo, su uso se puede extender a controles de temperatura, velocidad, potencia, entre otros.</p>
-                    <p> El algoritmo del control PID consta de tres parámetros distintos: el proporcional, el integral, y el derivativo. El valor proporcional depende del error actual, el integral depende de los errores pasados y el derivativo es una predicción de los errores futuros. La suma de estas tres acciones es usada para ajustar el proceso por medio de un elemento de control, como la posición de una válvula de control o la potencia suministrada a un calentador.</p>
-                </div>
-            </div>
-        </div>
-        
+
+        <app-descripcion></app-descripcion>
+
         <div class="linea"></div>
         
-        <div class="subtitulo">
-
-            <h2>Parámetros Fundamentales</h2>
-
-            <p>El algoritmo de control incluye tres parámetros fundamentales: Ganancia proporcional (P), Integral (I) y Derivativo (D).</p>
-        </div>
-        <ul class="item-list">
-            <li>
-                <b>(P) Ganancia Proporcional</b>
-                — Mide la diferencia entre el valor actual y el set-point (en porcentaje), luego <b>aplica el cambio</b> en dicho porcentaje.</li>
-            <li>
-                <b>(I) Ganancia Integral</b>
-                — Se refiere al tiempo que se toma para llevar a cabo acción correctiva. Mientras el valor sea más pequeño, el ajuste es más rápido pero puede causar inestabilidad en el sistema, oscilaciones</li>
-            <li>
-                <b>(D) Ganancia Derivativo</b>
-                — emite una acción <b>predictiva</b>, es decir, prevé el error e inicia una acción oportuna. Responde a la velocidad del cambio del error y produce una corrección significativa antes de que la magnitud del error se vuelva demasiado grande.</li>
-        </ul>
-        <div class="linea"></div>
-        <div class="subtitulo">
-            <h2>Diagrama de Bloque lazo cerrado</h2>
-        </div>
-        
-        <div class="w3-row"> 
-            <div class="w3-threequarter w3-container ">
-                <p>
-                    El control PID combina acciones proporcionales, integrales y derivadas para generar una única señal 
-                    de control, donde cada acción tiene una característica fuerte que ayuda a controlar la salida. La acción 
-                    proporcional hace que el sistema reaccione al presente error, permitiendo una acción inmediata ante 
-                    variaciones o perturbaciones; La acción integral elimina los errores de estado estacionario a largo
-                        plazo, y la acción Derivativa anticipa el comportamiento del proceso (BAZANELLA, 2005).
-                </p>
-            </div>
-            <div class="w3-quarter w3-container w3-hide-small">
-                <div class="image-container4">
-                    <img src="./assets/images-articles/PID_Dibujo.png">
-                </div>
-            </div>
-            <div class="w3-container">
-                <div class="image-container1">
-                    <img src="./assets/images-articles/PID_DiagramaBloque.png">
-                </div>
-            </div>
-        </div>
-        <div class="subtitulo-centrado">
-            <h3>Acción Proporcional (Kp)</h3>
-        </div>
-        <div class="w3-row"> 
-            <div class="w3-half w3-container">
-                <div class="image-container4">
-                    <img src="https://www.novusautomation.com/Imagens/Art_controladores_3.png">
-                </div>
-            </div>
-            <div class="w3-half w3-container ">
-                
-                <p>
-                    Hay un límite máximo y mínimo para aplicar la señal MV (Variable Manipulada) por razones de restricción física y de seguridad: este rango operativo se llama Banda Proporcional. Si la señal de control opera fuera de rango, se dice que está saturada y opera con un comportamiento no lineal. Cuanto más grande sea el valor de la acción proporcional, más pequeña será la banda proporcional y mayor será la energía de control. Esto hace que el sistema responda más rápidamente, pero la señal de salida puede exceder o caer por debajo del punto de ajuste de estado estable, y el error nunca se borrará por completo.
-                </p>
-            </div>
-        </div>
-        <br>
-        <div class="subtitulo-centrado">
-            <h3>Acción Integral (Ti)</h3>
-        </div>
-        <div class="w3-row">
-            <div class="w3-half w3-container">
-                <div class="image-container4">
-                    <img src="https://www.novusautomation.com/Imagens/Art_controladores_4.png">
-                </div>
-            </div>
-            <div class="w3-half w3-container ">
-                <p>
-                    Cuando la acción integral se aplica de forma aislada, la estabilidad relativa del sistema empeora, pero cuando se usa junto con la acción proporcional, ayuda a anular el error de forma permanente. Cuanto más grande sea el valor integral, más tiempo le tomará al sistema alcanzar el punto de ajuste de estado estable.
-                </p>
-            </div>
-        </div>
-        <br>
-        <div class="subtitulo-centrado">
-            <h3>Acción Derivativa (Td)</h3>
-        </div>
-        <div class="w3-row"> 
-            <div class="w3-half w3-container">
-                <div class="image-container4">
-                    <img src="https://www.novusautomation.com/Imagens/Art_controladores_5.png">
-                </div>
-            </div>
-            <div class="w3-half w3-container ">
-                <p>
-                    El proceso generalmente tiene una inercia con respecto a los cambios en la MV (Variable Manipulada), es decir, el tiempo que un cambio en la entrada del proceso provoca un cambio en la salida. La acción derivativa anticipa la acción de control para que el proceso reaccione más rápido de lo habitual, esta acción predictiva aumenta la estabilidad relativa del sistema y hace que la respuesta sea más rápida y menos oscilatoria a medida que pasa el tiempo. En estado estacionario, esta acción será nula porque el valor del error será constante.
-                </p>
-                <br>
-            </div>
-        </div>
-        <div class="w3-row">
-            <div class="w3-container">
-                    
-                <p>La ecuación matemática para calcular la señal de control MV (Variable Manipulada) se muestra a continuación, donde los parámetros Kp, Ti y Td están relacionados. El valor de error, representado como "e" en la ecuación, es utilizado por cada acción de control para generar la señal.</p>
-                <div class="image-container1">
-                    <img src="./assets/images-articles/formulaPID.png">
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="w3-row">
-            <div class="w3-container">
-                    
-                <p>Por lo tanto, el control PID combina las tres acciones descritas, y cada una compensa la característica indeseable de la otra. La acción integral en estado estable anula el error, y la acción derivativa suprime el efecto oscilatorio de la acción integral, ya que el efecto anticipado agiliza la respuesta y aumenta la estabilidad relativa del sistema. La acción proporcional cambia la rapidez con la que se recupera el punto de ajuste. Estos comportamientos descritos se pueden observar aumentando el valor de cada acción individualmente en el proceso.</p>
-                <div class="image-container4">
-                    <img src="https://www.novusautomation.com/Imagens/art_controladores_7.png">
-                </div>
-            </div>
-        </div>
+        <app-descripcion-avanzada></app-descripcion-avanzada>
 
         <div class="linea"></div>
         <br>
-        <h1 id="subtitulo">
-            <!-- <a href="#other" class="permalink">
-                <span class="subtitulo">Referencias</span>
-                <span class="content-hash"></span>
-            </a> -->
-            <span class="subtitulo">Referencias</span>
-        </h1>
-        <ul class="related-posts faded">
-            <li>
-                <!-- <a href="/LICENSE/" class="heading flip-title">LICENSE</a> -->
-                <p><a href="https://es.wikipedia.org/wiki/Controlador_PID">wikipedia.org/wiki/Controlador_PID</a></p>
-                <p>controlador PID (controlador proporcional, integral y derivativo)</p></li>
-            <li>
-                <!-- <a href="/NOTICE/" class="heading flip-title">NOTICE</a> -->
-                <p><a href="https://realpars.com/pid-controller/">PID Controller Explained</a></p>
-                    <p>Learn why PID Controllers are used in industrial processes instead of simple ON/OFF Controllers.</p></li>
-            <li>
-                <!-- <a href="/CHANGELOG/" class="heading flip-title">CHANGELOG</a> -->
-                <p>Bazanella, A. S.; Silva Júnior, J. M. G. Da. </p><p>“Sistemas de Controle”: princípios e métodos de projeto. 1.ed. Editora UFRGS, 2005.</p></li>
-        </ul>
+        <app-referencias></app-referencias>
     </article>
+    
 </body>

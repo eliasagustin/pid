@@ -1,0 +1,35 @@
+<div class="w3-row">
+    <h2 class="subtitulo-centrado">Descripción de un controlador PID</h2>
+    <div class="w3-quarter w3-container w3-hide-small">
+        <div class="image-container2">
+            
+            <img class="imagen-chica" src="./assets/images-articles/Curva_PID_sinFondo.png" alt="PID control - Tank valve">
+        </div>
+    </div>
+    <div class="w3-threequarter w3-container texto">
+        <div class="texto-f1">
+            <p>El <b>control PID</b> es un mecanismo de control, que a través de un <b>lazo de retroalimentación</b> permite regular la velocidad, temperatura, presión y flujo entre otras variables, de un proceso en general.</p>
+            <p>Este controlador calcula la diferencia entre nuestra variable real <em>(lo que estamos midiendo)</em> contra la variable deseada.</p>
+            <p class="note">Este controlador puede aplicarse a cualquier sistema o aplicación. Se usa comúnmente para controlar la posición de algún elemento mecánico, como puede ser un servomotor. Sin embargo, su uso se puede extender a controles de temperatura, velocidad, potencia, entre otros.</p>
+            <p> El algoritmo del control PID consta de tres parámetros distintos: el proporcional, el integral, y el derivativo. El valor proporcional depende del error actual, el integral depende de los errores pasados y el derivativo es una predicción de los errores futuros. La suma de estas tres acciones es usada para ajustar el proceso por medio de un elemento de control, como la posición de una válvula de control o la potencia suministrada a un calentador.</p>
+        </div>
+    </div>
+</div>
+
+<div class="subtitulo">
+
+    <h2>Parámetros Fundamentales</h2>
+
+    <p>El algoritmo de control incluye tres parámetros fundamentales: Ganancia proporcional (P), Integral (I) y Derivativo (D).</p>
+</div>
+<ul class="item-list">
+    <li>
+        <b>(P) Ganancia Proporcional</b>
+        — Mide la diferencia entre el valor actual y el set-point (en porcentaje), luego <b>aplica el cambio</b> en dicho porcentaje.</li>
+    <li>
+        <b>(I) Ganancia Integral</b>
+        — Se refiere al tiempo que se toma para llevar a cabo acción correctiva. Mientras el valor sea más pequeño, el ajuste es más rápido pero puede causar inestabilidad en el sistema, oscilaciones</li>
+    <li>
+        <b>(D) Ganancia Derivativo</b>
+        — emite una acción <b>predictiva</b>, es decir, prevé el error e inicia una acción oportuna. Responde a la velocidad del cambio del error y produce una corrección significativa antes de que la magnitud del error se vuelva demasiado grande.</li>
+</ul>

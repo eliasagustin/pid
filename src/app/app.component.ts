@@ -23,13 +23,13 @@ export class AppComponent implements OnInit{
   // https://fonts.google.com/icons
 
   tabs: TabItem[] = [
+    // {
+    //   label: ' Destacados',
+    //   icon: 'grid_view',
+    //   route: 'section-construc',
+    // },
     {
-      label: ' Destacados',
-      icon: 'grid_view',
-      route: 'section-construc',
-    },
-    {
-      label: ' Documentos',
+      label: ' Información',
       icon: 'menu_book',
       route: 'section-intro-pid',
     },

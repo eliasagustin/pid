@@ -31,7 +31,7 @@
   height: 40vw;
   width: 80%;
   border-style: "none";
-  background-color: #1b1b1b42;
+  background-color: rgba(8, 8, 8, 0.411);
 }
 @media only screen and (min-width: 1200px) {
   #objViewer {
