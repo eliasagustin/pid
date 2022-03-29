@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 export interface Tarjeta {
   titulo: string;
   subTitulo: string;
@@ -7,13 +6,12 @@ export interface Tarjeta {
   imagen: string;
   enlace: string;
 }
-
 @Component({
-  selector: 'app-code-gallery-pa',
-  templateUrl: './code-gallery-pa.component.html',
-  styleUrls: ['./code-gallery-pa.component.css']
+  selector: 'app-gallery',
+  templateUrl: './gallery.component.html',
+  styleUrls: ['./gallery.component.css']
 })
-export class CodeGalleryPaComponent implements OnInit {
+export class GalleryComponent implements OnInit {
 
   tarjeta: Tarjeta[] = [
     {
@@ -43,7 +41,15 @@ export class CodeGalleryPaComponent implements OnInit {
       texto: '...sonico.ino',
       imagen: './assets/images-articles/code1.png',
       enlace: 'https://github.com/eliasagustin/pid/blob/main/src/assets/codes/sensor_de_distancia_ultrasonico.ino'
+    },
+    {
+      titulo: 'Archivos impresión 3D',
+      subTitulo: 'obj, stl, step, sat..',
+      texto: 'obj, stl, sat, step..',
+      imagen: './assets/images-articles/descargapaso1.png',
+      enlace: 'https://a360.co/36mesOH'
     }
+
   ]
 
   constructor() { }
@@ -62,4 +68,3 @@ export class CodeGalleryPaComponent implements OnInit {
       url, "_blank");
   }
 }
-

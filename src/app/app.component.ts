@@ -41,12 +41,12 @@ export class AppComponent implements OnInit{
     {
       label: 'Descargas',
       icon: 'file_download',
-      route: 'section-construc',
+      route: 'section-downloads',
     },
     {
       label: 'Contacto',
       icon: 'person',
-      route: 'section-construc',
+      route: 'contact',
     }
   ];
 

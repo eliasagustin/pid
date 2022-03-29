@@ -1,0 +1,52 @@
+<div class="box">
+<div class="card">
+    <div class="contactInfor">
+      <div>
+        <h1>Información de Contacto</h1>
+        <p>Por cualquier consulta o contribución</p>
+    </div>
+    <div class="resumen">
+
+    </div>
+    <div class="datos">
+      <mat-icon class="icono">phone</mat-icon> <span>+54 341 5149386</span><br>
+      <mat-icon class="icono">mail</mat-icon> <span>eliasagustin@gmail.com</span><br>
+      <mat-icon class="icono">location_city</mat-icon> <span>Rosario, Santa Fe Arg.</span><br>
+      <img class="profileImg" src="https://lh3.googleusercontent.com/a-/AOh14GhdyvYEzwVmyzYckh3ejIV3-gChLWIAvV_vd1vLTQ=s576-p-rw-no" alt="Agustin Elias" >
+    </div>
+    </div>
+    <div id="contact-form" class="contactForm">
+        
+        <p id="failure">Oopsie...message not sent.</p>
+        <p id="success">Your message was sent successfully. Thank you!</p>
+
+        <form class="contact" [formGroup]="form" method="post" (ngSubmit)="onSubmit()">
+            <div>
+                <label for="name">
+                    <span class="required">Nombre</span>
+                    <input [formControl]="name" required type="text" id="name" name="name" value="" placeholder="Su nombre" required="required" tabindex="1" autofocus="autofocus"/>
+                </label>
+            </div>
+            <div>
+                <label for="email" class="label">
+                    <span class="required">Email</span>
+                    <input [formControl]="email" required type="text" id="email" name="email" value="" placeholder="email@ejemplo.com" required="required" tabindex="2" autofocus="autofocus"/>
+                </label>
+            </div>
+            <div>
+                <label for="message">
+                    <span class="required">Mensaje</span>
+                    <textarea id="message" name="message" [formControl]="message" maxlength="256" placeholder="Ingrese su consulta aquí." tabindex="3" required="required"></textarea>
+                </label>
+            </div>
+
+            <button [disabled]="isLoading" class="submit" type="submit">Submit</button>
+            <input [formControl]="honeypot" class="hidden" type="text"/>
+            <div [ngClass]="!submitted? 'hidden' : 'visible'" class="center-text">
+                <span>{{responseMessage}}</span>
+            </div>
+        </form>
+
+    </div>
+</div>
+</div>

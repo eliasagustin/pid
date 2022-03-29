@@ -13,17 +13,16 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import {AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ThreeSixtyModule } from '@mediaman/angular-three-sixty';
 import { MatExpansionModule } from '@angular/material/expansion';
 
 
-
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     AppRoutingModule,

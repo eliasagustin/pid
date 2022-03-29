@@ -27,6 +27,8 @@ import { CircuitoComponent } from './circuito/circuito.component';
     RouterModule.forChild([{path:'', component: SectionHardwareComponent}]),
     SharedModule,
 
+  ],
+  exports:[
   ]
 })
 export class SectionHardwareModule { }

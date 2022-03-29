@@ -9,10 +9,10 @@ const routes: Routes = [
     redirectTo: 'section-intro-pid',
   },
   {
-    path: 'topics',
+    path: 'section-downloads',
     loadChildren: () =>
-      import('./section-about/section-about.module').then(
-        (m) => m.SectionAboutModule
+      import('./section-downloads/section-downloads.module').then(
+        (m) => m.SectionDownloadsModule
       ),
   },
   {
