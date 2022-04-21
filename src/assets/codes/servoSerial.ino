@@ -8,22 +8,11 @@ void setup()
 Serial.begin(9600);
 while (!Serial);
 Serial.println("-------------------------");
-Serial.println("PID_Cal is loading....");
-delay(1000);
-Serial.println("PID_Cal loaded succesfully");
+Serial.println("Cargando calibración....");
 Serial.println("-------------------------");
-myservo.attach(9);
-Serial.println("calibrating servo...");
-for(pos = 0; pos <= 180; pos += 1)
-myservo.write(0);
-delay(1000);
-myservo.write(180);
-delay(1000);
-myservo.write(90);
-delay(1000);
-Serial.println("servo calibrated");
+myservo.attach(8);
 Serial.println("-------------------------");
-Serial.println("Comand input online, write command to perform action");
+Serial.println("Ingrese angulo de 0 a 180");
 Serial.println("-------------------------");
 
 }
@@ -39,7 +28,7 @@ if (state < 10)
 {
 Serial.print(">");
 Serial.println(state);
-Serial.println("cannost execute command, too low number");
+Serial.println("comando inválido número demasiado bajo");
 
 }
 
@@ -47,9 +36,9 @@ if (state >= 10 && state < 170)
 {
   Serial.print(">");
   Serial.println(state);
-  Serial.print("turning servo to ");
+  Serial.print("moviendo servo a ");
   Serial.print(state);
-  Serial.println(" degrees");
+  Serial.println(" grados");
   myservo.write(state);
   
 }
